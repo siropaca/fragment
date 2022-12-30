@@ -13,6 +13,9 @@ coverage
 out/
 build
 
+# IDE
+.idea
+
 # misc
 .DS_Store
 *.pem
