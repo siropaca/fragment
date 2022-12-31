@@ -1,24 +1,20 @@
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { Button } from 'ui';
 
-interface MyQuery {
-  articles: {
-    id: string;
-    title: string;
-    body: string;
-  }[];
-}
+import { graphql } from '@/gql';
+
+const queryDocument = graphql(`
+  query MyQuery {
+    articles {
+      id
+      title
+      body
+    }
+  }
+`);
 
 export default function Web() {
-  const { loading, error, data } = useQuery<MyQuery>(gql`
-    query {
-      articles {
-        id
-        title
-        body
-      }
-    }
-  `);
+  const { loading, error, data } = useQuery(queryDocument);
 
   if (loading) return <p>Loading...</p>;
 
