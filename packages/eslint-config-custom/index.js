@@ -1,9 +1,9 @@
 module.exports = {
   plugins: ['import', 'unused-imports'],
   extends: ['next', 'turbo', 'eslint:recommended', 'prettier'],
+  ignorePatterns: ['*.d.ts', '*.config.js'],
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
-    'react/jsx-key': 'off',
     'import/order': [
       'error',
       {
@@ -26,5 +26,6 @@ module.exports = {
       'error',
       { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
     ],
+    'turbo/no-undeclared-env-vars': 'off',
   },
 };
