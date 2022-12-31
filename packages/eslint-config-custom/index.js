@@ -4,7 +4,6 @@ module.exports = {
   ignorePatterns: ['*.d.ts', '*.config.js'],
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
-    'react/jsx-key': 'off',
     'import/order': [
       'error',
       {
