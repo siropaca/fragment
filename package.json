@@ -10,7 +10,8 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{js,ts,tsx}\"",
+    "ncu": "npx npm-check-updates --deep"
   },
   "devDependencies": {
     "eslint-config-custom": "*",
