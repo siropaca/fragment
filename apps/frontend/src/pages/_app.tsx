@@ -1,8 +1,8 @@
 import { ApolloProvider } from '@apollo/client';
 
-import { client } from '../lib/apollo';
-
 import type { AppProps } from 'next/app';
+
+import { client } from '@/lib/apollo';
 
 function MyApp({ Component, pageProps }: AppProps<{}>): JSX.Element {
   return (
