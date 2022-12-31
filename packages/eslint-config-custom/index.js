@@ -26,5 +26,6 @@ module.exports = {
       'error',
       { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
     ],
+    'turbo/no-undeclared-env-vars': 'off',
   },
 };
