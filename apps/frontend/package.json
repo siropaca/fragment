@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "yarn codegen && next dev",
     "prebuild": "yarn codegen",
     "build": "next build",
     "start": "next start",
