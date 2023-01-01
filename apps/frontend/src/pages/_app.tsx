@@ -8,10 +8,13 @@ import type { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps<{}>): JSX.Element {
   return (
-    <ApolloProvider client={client}>
+    <>
       <Head />
-      <Component {...pageProps} />
-    </ApolloProvider>
+
+      <ApolloProvider client={client}>
+        <Component {...pageProps} />
+      </ApolloProvider>
+    </>
   );
 }
 

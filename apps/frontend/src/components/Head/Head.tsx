@@ -1,18 +1,19 @@
-import { Helmet } from 'react-helmet-async';
+import { default as NextHead } from 'next/head';
 
 interface HeadProps {
   title?: string;
   description?: string;
 }
 
-export const Head = ({ title = '', description = '' }: HeadProps = {}) => {
+export const Head = ({ title = '', description = '' }: HeadProps) => {
   const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
 
+  // title={title ? `${title} | ${SITE_NAME}` : undefined}
+  // defaultTitle={SITE_NAME}
+
   return (
-    <Helmet
-      title={title ? `${title} | ${SITE_NAME}` : undefined}
-      defaultTitle={SITE_NAME}
-    >
+    <NextHead>
+      <title>{title ? `${title} - ${SITE_NAME}` : SITE_NAME}</title>
       <meta
         name='description'
         content={description}
@@ -27,6 +28,6 @@ export const Head = ({ title = '', description = '' }: HeadProps = {}) => {
         name='robots'
         content='nofollow'
       />
-    </Helmet>
+    </NextHead>
   );
 };
