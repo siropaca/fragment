@@ -1,5 +1,4 @@
 import { useQuery } from '@apollo/client';
-import { Button } from 'ui';
 
 import { graphql } from '@/gql';
 
@@ -32,8 +31,6 @@ export default function Web() {
           </div>
         );
       })}
-
-      <Button />
     </div>
   );
 }
