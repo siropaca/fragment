@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@apollo/client": "3.7.3",
+    "clsx": "^1.2.1",
     "graphql": "16.6.0",
     "next": "13.1.1",
     "react": "^18.2.0",
