@@ -1,6 +1,8 @@
 import '@/styles/globals.css';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import { ApolloProvider } from '@apollo/client';
 
+import { Footer } from '@/components/Footer';
 import { Head } from '@/components/Head';
 import { client } from '@/lib/apollo';
 
@@ -13,6 +15,8 @@ function MyApp({ Component, pageProps }: AppProps<{}>): JSX.Element {
 
       <ApolloProvider client={client}>
         <Component {...pageProps} />
+
+        <Footer />
       </ApolloProvider>
     </>
   );

@@ -1,15 +1,12 @@
 import { default as NextHead } from 'next/head';
 
-interface HeadProps {
+interface Props {
   title?: string;
   description?: string;
 }
 
-export const Head = ({ title = '', description = '' }: HeadProps) => {
+export const Head = ({ title = '', description = '' }: Props): JSX.Element => {
   const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
-
-  // title={title ? `${title} | ${SITE_NAME}` : undefined}
-  // defaultTitle={SITE_NAME}
 
   return (
     <NextHead>
