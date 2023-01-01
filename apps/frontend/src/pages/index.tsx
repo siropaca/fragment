@@ -103,7 +103,7 @@ const Index: NextPage<Props> = () => {
               key={post.title}
               className='flex flex-col overflow-hidden rounded-lg shadow-lg'
             >
-              <div className='flex-shrink-0'>
+              <div className='shrink-0'>
                 <img
                   className='h-48 w-full object-cover'
                   src={post.imageUrl}
@@ -129,7 +129,7 @@ const Index: NextPage<Props> = () => {
                   </a>
                 </div>
                 <div className='mt-6 flex items-center'>
-                  <div className='flex-shrink-0'>
+                  <div className='shrink-0'>
                     <a href={post.author.href}>
                       <span className='sr-only'>{post.author.name}</span>
                       <img
