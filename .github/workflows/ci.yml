@@ -20,7 +20,7 @@ jobs:
           node-version: '18.x'
           cache: 'yarn'
 
-      - name: coverage
+      - name: Frontend Test
         run: |
           yarn install
           cd apps/frontend
@@ -28,4 +28,4 @@ jobs:
           yarn coverage
           echo '# Coverage :rocket:' >> $GITHUB_STEP_SUMMARY
           # sed で先頭行と末尾行の不要な罫線を消す
-          cat apps/frontend/coverage/report.txt | sed '1d' | sed '$d' >> $GITHUB_STEP_SUMMARY
+          cat ./coverage/report.txt | sed '1d' | sed '$d' >> $GITHUB_STEP_SUMMARY
