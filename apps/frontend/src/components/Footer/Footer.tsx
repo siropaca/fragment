@@ -17,7 +17,8 @@ const navigation = {
       icon: () => (
         <FontAwesomeIcon
           icon={faFacebook}
-          className='h-5 w-5 text-gray-500'
+          className='text-gray-500'
+          size='2x'
         />
       ),
     },
@@ -27,7 +28,8 @@ const navigation = {
       icon: () => (
         <FontAwesomeIcon
           icon={faInstagram}
-          className='h-5 w-5 text-gray-500'
+          className='text-gray-500'
+          size='2x'
         />
       ),
     },
@@ -37,7 +39,8 @@ const navigation = {
       icon: () => (
         <FontAwesomeIcon
           icon={faTwitter}
-          className='h-5 w-5 text-gray-500'
+          className='text-gray-500'
+          size='2x'
         />
       ),
     },
@@ -47,7 +50,8 @@ const navigation = {
       icon: () => (
         <FontAwesomeIcon
           icon={faGithub}
-          className='h-5 w-5 text-gray-500'
+          className='text-gray-500'
+          size='2x'
         />
       ),
     },
@@ -77,7 +81,7 @@ export const Footer = (): JSX.Element => {
           ))}
         </nav>
 
-        <div className='mt-8 flex justify-center space-x-6'>
+        <div className='mt-8 flex justify-center space-x-10'>
           {navigation.social.map((item) => (
             <a
               key={item.name}

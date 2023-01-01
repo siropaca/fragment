@@ -14,6 +14,13 @@ export const URL = {
   },
 
   /**
+   * タグ検索結果
+   */
+  tagsResults(tag: string) {
+    return `/tags/${tag}`;
+  },
+
+  /**
    * 404ページ
    */
   notfound() {

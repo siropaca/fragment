@@ -22,6 +22,15 @@ describe('URL', () => {
   });
 
   /**
+   * tagsResults()
+   */
+  describe('tagsResults()', () => {
+    it('正しいパスが返るか', () => {
+      expect(URL.tagsResults('JavaScript')).toEqual('/tags/JavaScript');
+    });
+  });
+
+  /**
    * notfound()
    */
   describe('notfound()', () => {

@@ -1,9 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { GetServerSideProps, NextPage } from 'next';
-import { useRouter } from 'next/router';
 
 import { graphql } from '@/gql';
-import { URL } from '@/lib/router';
 
 interface Props {
   articleId: string;
@@ -25,7 +23,6 @@ const queryDocument = graphql(`
 `);
 
 const ArticlesDetail: NextPage<Props> = (props) => {
-  const router = useRouter();
   const { loading, error, data } = useQuery(queryDocument, {
     variables: {
       where: {
@@ -39,8 +36,7 @@ const ArticlesDetail: NextPage<Props> = (props) => {
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
 
   if (!data || !data.article) {
-    router.replace(URL.notfound());
-    return null;
+    return <p>Sorry not found.</p>;
   }
 
   return (
