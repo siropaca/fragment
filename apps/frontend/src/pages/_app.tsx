@@ -1,8 +1,9 @@
+import '@/styles/globals.css';
 import { ApolloProvider } from '@apollo/client';
 
-import type { AppProps } from 'next/app';
-
 import { client } from '@/lib/apollo';
+
+import type { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps<{}>): JSX.Element {
   return (
