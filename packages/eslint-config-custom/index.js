@@ -3,6 +3,12 @@ module.exports = {
   extends: ['next', 'turbo', 'eslint:recommended', 'prettier'],
   ignorePatterns: ['*.d.ts', '*.config.js', '**/gql/*.ts'],
   rules: {
+    'no-console': [
+      'error',
+      {
+        allow: ['warn', 'error'],
+      },
+    ],
     '@next/next/no-html-link-for-pages': 'off',
     'import/order': [
       'error',

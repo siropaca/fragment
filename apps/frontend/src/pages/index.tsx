@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client';
+import { GetServerSideProps, NextPage } from 'next';
 
 import { graphql } from '@/gql';
 
@@ -7,7 +8,7 @@ const queryDocument = graphql(`
     articles {
       id
       title
-      body
+      description
     }
   }
 `);
@@ -69,13 +70,16 @@ const posts = [
   },
 ];
 
-export default function Web() {
+interface Props {}
+
+const Index: NextPage<Props> = () => {
   const { loading, error, data } = useQuery(queryDocument);
 
   if (loading) return <p>Loading...</p>;
 
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
 
+  // eslint-disable-next-line no-console
   console.log(data);
 
   return (
@@ -158,4 +162,12 @@ export default function Web() {
       </div>
     </div>
   );
-}
+};
+
+export default Index;
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  return {
+    props: {},
+  };
+};
