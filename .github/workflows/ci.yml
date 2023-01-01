@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  # プルリクエスト時に実行
+  pull_request:
+  # 他のワークフローから呼び出し可能
+  workflow_call:
+  # GitHub上から任意のタイミングで実行可能
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: 'yarn'
+
+      - name: Frontend Test
+        run: |
+          yarn install
+          cd apps/frontend
+          yarn test
+          yarn coverage
+          echo '# Coverage :rocket:' >> $GITHUB_STEP_SUMMARY
+          # sed で先頭行と末尾行の不要な罫線を消す
+          cat ./coverage/report.txt | sed '1d' | sed '$d' >> $GITHUB_STEP_SUMMARY

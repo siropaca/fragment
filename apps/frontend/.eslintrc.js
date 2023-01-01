@@ -5,4 +5,7 @@ module.exports = {
     React: true,
     JSX: true,
   },
+  env: {
+    jest: true,
+  },
 };
