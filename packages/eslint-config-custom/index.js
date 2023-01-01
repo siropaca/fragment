@@ -1,7 +1,7 @@
 module.exports = {
   plugins: ['import', 'unused-imports'],
   extends: ['next', 'turbo', 'eslint:recommended', 'prettier'],
-  ignorePatterns: ['*.d.ts', '*.config.js'],
+  ignorePatterns: ['*.d.ts', '*.config.js', '**/gql/*.ts'],
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
     'import/order': [
