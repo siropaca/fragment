@@ -20,4 +20,22 @@ describe('URL', () => {
       expect(URL.articleDetail(ARTICLE_ID)).toEqual('/articles/clcby90x4jik30bzv6mekyrcc');
     });
   });
+
+  /**
+   * tagsResults()
+   */
+  describe('tagsResults()', () => {
+    it('正しいパスが返るか', () => {
+      expect(URL.tagsResults('JavaScript')).toEqual('/tags/JavaScript');
+    });
+  });
+
+  /**
+   * notfound()
+   */
+  describe('notfound()', () => {
+    it('正しいパスが返るか', () => {
+      expect(URL.notfound()).toEqual('/404');
+    });
+  });
 });

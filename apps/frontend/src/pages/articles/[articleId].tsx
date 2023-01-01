@@ -35,7 +35,9 @@ const ArticlesDetail: NextPage<Props> = (props) => {
 
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
 
-  if (!data) return <p>No Data!</p>;
+  if (!data || !data.article) {
+    return <p>Sorry not found.</p>;
+  }
 
   return (
     <div>

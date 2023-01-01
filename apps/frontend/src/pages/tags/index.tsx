@@ -2,11 +2,11 @@ import { GetServerSideProps, NextPage } from 'next';
 
 import { URL } from '@/lib/router';
 
-const ArticlesIndex: NextPage = () => {
+const TagsIndex: NextPage = () => {
   return null;
 };
 
-export default ArticlesIndex;
+export default TagsIndex;
 
 export const getServerSideProps: GetServerSideProps = async () => {
   return {
