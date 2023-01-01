@@ -262,7 +262,7 @@ export const Header = (): JSX.Element => {
                               className='font-medium text-indigo-600 hover:text-indigo-500'
                             >
                               View all posts
-                              <span aria-hidden='true'> &rarr;</span>
+                              <span> &rarr;</span>
                             </a>
                           </div>
                         </div>

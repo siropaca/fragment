@@ -108,7 +108,7 @@ const Index: NextPage = () => {
 
                     <div className='flex space-x-1 text-sm text-gray-500'>
                       <time dateTime={'2020-03-16'}>{'Mar 16, 2020'}</time>
-                      <span aria-hidden='true'>&middot;</span>
+                      <span>&middot;</span>
                       <span>{'6 min'} read</span>
                     </div>
                   </div>
