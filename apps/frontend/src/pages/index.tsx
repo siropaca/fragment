@@ -79,8 +79,6 @@ const Index: NextPage<Props> = () => {
 
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
 
-  console.log(data);
-
   return (
     <div className='relative bg-gray-50 px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28'>
       <div className='absolute inset-0'>
