@@ -12,7 +12,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     redirect: {
       destination: URL.root(),
-      permanent: false,
+      permanent: true,
     },
   };
 };
