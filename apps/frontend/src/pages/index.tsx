@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client';
+import ReactMarkdown from 'react-markdown';
 
 import { graphql } from '@/gql';
 
@@ -27,7 +28,7 @@ export default function Web() {
         return (
           <div key={article.id}>
             <div>{article.title}</div>
-            <div>{article.body}</div>
+            <ReactMarkdown children={article.body} />
           </div>
         );
       })}
