@@ -1,6 +1,6 @@
 module.exports = {
-  plugins: ['import', 'unused-imports'],
-  extends: ['next', 'turbo', 'eslint:recommended', 'prettier'],
+  plugins: ['import', 'unused-imports', 'tailwindcss'],
+  extends: ['next', 'turbo', 'eslint:recommended', 'prettier', 'plugin:tailwindcss/recommended'],
   ignorePatterns: ['*.d.ts', '*.config.js', '**/gql/*.ts'],
   rules: {
     'no-console': [
@@ -34,5 +34,8 @@ module.exports = {
     ],
     'turbo/no-undeclared-env-vars': 'off',
     'react/no-children-prop': 'off',
+    'tailwindcss/classnames-order': 'warn',
+    'tailwindcss/no-custom-classname': 'warn',
+    'tailwindcss/no-contradicting-classname': 'error',
   },
 };
