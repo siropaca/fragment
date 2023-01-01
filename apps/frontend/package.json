@@ -7,6 +7,7 @@
     "prebuild": "yarn codegen",
     "build": "next build",
     "start": "next start",
+    "test": "jest",
     "lint": "next lint",
     "codegen": "graphql-codegen --config codegen.ts",
     "codegen:watch": "graphql-codegen --watch"
@@ -23,7 +24,8 @@
     "next": "13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-markdown": "^8.0.4"
+    "react-markdown": "^8.0.4",
+    "recoil": "0.7.6"
   },
   "devDependencies": {
     "@babel/core": "7.20.7",
