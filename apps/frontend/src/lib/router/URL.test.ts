@@ -9,4 +9,15 @@ describe('URL', () => {
       expect(URL.root()).toEqual('/');
     });
   });
+
+  /**
+   * articleDetail()
+   */
+  describe('articleDetail()', () => {
+    const ARTICLE_ID = 'clcby90x4jik30bzv6mekyrcc';
+
+    it('正しいパスが返るか', () => {
+      expect(URL.articleDetail(ARTICLE_ID)).toEqual('/articles/clcby90x4jik30bzv6mekyrcc');
+    });
+  });
 });
