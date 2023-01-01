@@ -27,5 +27,6 @@ module.exports = {
       { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
     ],
     'turbo/no-undeclared-env-vars': 'off',
+    'react/no-children-prop': 'off',
   },
 };
