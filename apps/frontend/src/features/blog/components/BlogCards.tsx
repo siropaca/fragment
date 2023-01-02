@@ -19,7 +19,7 @@ const queryDocument = graphql(`
   }
 `);
 
-export const ArticlesCards = (): JSX.Element => {
+export const BlogCards = (): JSX.Element => {
   const { loading, error, data } = useQuery(queryDocument);
 
   if (loading) return <p>Loading...</p>;
