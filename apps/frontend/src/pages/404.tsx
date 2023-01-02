@@ -1,12 +1,12 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
 
-import { MainLayout } from '@/components/Layout';
+import { ContentsLayout } from '@/components/Layout';
 import { URL } from '@/lib/router';
 
 const Custom404: NextPage = () => {
   return (
-    <MainLayout>
+    <ContentsLayout>
       <div className='min-h-full bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8'>
         <div className='mx-auto max-w-max'>
           <main className='sm:flex'>
@@ -35,7 +35,7 @@ const Custom404: NextPage = () => {
           </div>
         </div>
       </div>
-    </MainLayout>
+    </ContentsLayout>
   );
 };
 
