@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 * {
-    letter-spacing: 0.03rem;
+  letter-spacing: 0.04rem;
+}
+
+body {
+  color: #333;
 }

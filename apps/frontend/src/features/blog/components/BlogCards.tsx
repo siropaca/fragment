@@ -10,11 +10,6 @@ const queryDocument = graphql(`
       title
       tags
       description
-      publishedBy {
-        id
-        name
-        picture
-      }
     }
   }
 `);
@@ -27,13 +22,13 @@ export const BlogCards = (): JSX.Element => {
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
 
   return (
-    <div>
+    <>
       {data!.articles.map((article) => (
         <ArticleCard
           key={article.id}
           {...article}
         />
       ))}
-    </div>
+    </>
   );
 };

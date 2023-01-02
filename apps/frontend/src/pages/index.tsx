@@ -6,8 +6,9 @@ import { BlogCards } from '@/features/blog/components';
 const Index: NextPage = () => {
   return (
     <ContentsLayout>
-      {/* 記事一覧 */}
-      <BlogCards />
+      <section className='grid gap-5 md:grid-cols-2 lg:grid-cols-4'>
+        <BlogCards />
+      </section>
     </ContentsLayout>
   );
 };

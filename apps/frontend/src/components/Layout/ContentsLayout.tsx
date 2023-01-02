@@ -17,12 +17,12 @@ export const ContentsLayout = (props: Props): JSX.Element => {
       <Header />
 
       <div className='bg-gray-50'>
-        <div
-          className='mx-auto'
+        <main
+          className='mx-auto py-6 px-8'
           style={{ maxWidth: CONTENTS_MAX_WIDTH }}
         >
           {props.children}
-        </div>
+        </main>
       </div>
 
       <Footer />

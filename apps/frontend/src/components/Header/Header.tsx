@@ -17,7 +17,7 @@ const MENUS = [
     img: {
       src: '/texts/Blog.svg',
       alt: 'Blog',
-      width: 49,
+      width: 47,
       height: 20,
     },
   },
@@ -29,8 +29,8 @@ const MENUS = [
     img: {
       src: '/texts/Tools.svg',
       alt: 'Tools',
-      width: 60,
-      height: 18,
+      width: 58,
+      height: 17,
     },
   },
   // TODO: ページを追加する
@@ -41,7 +41,7 @@ const MENUS = [
     img: {
       src: '/texts/About.svg',
       alt: 'About',
-      width: 71,
+      width: 69,
       height: 18,
     },
   },
@@ -54,8 +54,8 @@ const MENUS = [
     img: {
       src: '/texts/Contact.svg',
       alt: 'Contact',
-      width: 89,
-      height: 18,
+      width: 87,
+      height: 17,
     },
   },
 ];
