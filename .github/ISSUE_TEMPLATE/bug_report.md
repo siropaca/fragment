@@ -2,7 +2,7 @@
 name: Bug report
 about: 改善案を作成する
 title: "[Bug]: "
-labels: bug, welcome contribute
+labels: bug
 assignees: ''
 
 ---
