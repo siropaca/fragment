@@ -11,6 +11,15 @@ describe('URL', () => {
   });
 
   /**
+   * articles()
+   */
+  describe('articles()', () => {
+    it('正しいパスが返るか', () => {
+      expect(URL.articles()).toEqual('/articles');
+    });
+  });
+
+  /**
    * articleDetail()
    */
   describe('articleDetail()', () => {

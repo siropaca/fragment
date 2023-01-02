@@ -7,8 +7,12 @@ export const URL = {
   },
 
   /**
-   * 記事詳細ページ
+   * 記事ページ
    */
+  articles() {
+    return `/articles`;
+  },
+
   articleDetail(articleId: string) {
     return `/articles/${articleId}`;
   },
