@@ -82,7 +82,7 @@ export const Header = (): JSX.Element => {
 
         {/* TODO: 実装する */}
         {/* ハンバーガーメニュー */}
-        <span className='lg:hidden'>
+        <span className='cursor-pointer hover:opacity-50 lg:hidden'>
           <FontAwesomeIcon
             icon={faBars}
             className='text-gray-700'
