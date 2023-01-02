@@ -85,7 +85,7 @@ export const Header = (): JSX.Element => {
         <span className='lg:hidden'>
           <FontAwesomeIcon
             icon={faBars}
-            className='text-gray-600'
+            className='text-gray-700'
             size='xl'
           />
         </span>
