@@ -37,8 +37,8 @@ export const Header = (): JSX.Element => {
             <Image
               src='/texts/Blog.svg'
               alt='Blog'
-              width={43}
-              height={18}
+              width={49}
+              height={20}
             />
           </Link>
 
