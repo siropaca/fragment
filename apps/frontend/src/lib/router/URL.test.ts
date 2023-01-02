@@ -11,13 +11,22 @@ describe('URL', () => {
   });
 
   /**
+   * blog()
+   */
+  describe('blog()', () => {
+    it('正しいパスが返るか', () => {
+      expect(URL.blog()).toEqual('/blog');
+    });
+  });
+
+  /**
    * articleDetail()
    */
   describe('articleDetail()', () => {
     const ARTICLE_ID = 'clcby90x4jik30bzv6mekyrcc';
 
     it('正しいパスが返るか', () => {
-      expect(URL.articleDetail(ARTICLE_ID)).toEqual('/articles/clcby90x4jik30bzv6mekyrcc');
+      expect(URL.articleDetail(ARTICLE_ID)).toEqual('/blog/clcby90x4jik30bzv6mekyrcc');
     });
   });
 

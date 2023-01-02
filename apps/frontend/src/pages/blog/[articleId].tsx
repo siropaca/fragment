@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { GetServerSideProps, NextPage } from 'next';
 
+import { ContentsLayout } from '@/components/Layout';
 import { graphql } from '@/gql';
 
 interface Props {
@@ -40,15 +41,14 @@ const ArticlesDetail: NextPage<Props> = (props) => {
   }
 
   return (
-    <div>
+    <ContentsLayout>
       <h1>{data.article?.title}</h1>
       <h2>{data.article?.description}</h2>
       <h2>{JSON.stringify(data.article?.tags)}</h2>
-      <hr />
       {data.article?.articleNodes.map((node) => {
         return <div key={node.id}>{node.body}</div>;
       })}
-    </div>
+    </ContentsLayout>
   );
 };
 

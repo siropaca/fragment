@@ -10,16 +10,11 @@ const queryDocument = graphql(`
       title
       tags
       description
-      publishedBy {
-        id
-        name
-        picture
-      }
     }
   }
 `);
 
-export const ArticlesCards = (): JSX.Element => {
+export const BlogCards = (): JSX.Element => {
   const { loading, error, data } = useQuery(queryDocument);
 
   if (loading) return <p>Loading...</p>;
@@ -27,13 +22,13 @@ export const ArticlesCards = (): JSX.Element => {
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
 
   return (
-    <div className='grid gap-5 lg:grid-cols-3'>
+    <>
       {data!.articles.map((article) => (
         <ArticleCard
           key={article.id}
           {...article}
         />
       ))}
-    </div>
+    </>
   );
 };
