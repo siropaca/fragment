@@ -11,11 +11,11 @@ describe('URL', () => {
   });
 
   /**
-   * articles()
+   * blog()
    */
-  describe('articles()', () => {
+  describe('blog()', () => {
     it('正しいパスが返るか', () => {
-      expect(URL.articles()).toEqual('/articles');
+      expect(URL.blog()).toEqual('/blog');
     });
   });
 
@@ -26,7 +26,7 @@ describe('URL', () => {
     const ARTICLE_ID = 'clcby90x4jik30bzv6mekyrcc';
 
     it('正しいパスが返るか', () => {
-      expect(URL.articleDetail(ARTICLE_ID)).toEqual('/articles/clcby90x4jik30bzv6mekyrcc');
+      expect(URL.articleDetail(ARTICLE_ID)).toEqual('/blog/clcby90x4jik30bzv6mekyrcc');
     });
   });
 
