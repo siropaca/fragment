@@ -14,9 +14,7 @@ const TagsResults: NextPage<Props> = (props) => {
       <div>{`"${props.tag}" のタグがついた記事`}</div>
 
       {/* 記事一覧 */}
-      <div>
-        <TagsCards tag={props.tag} />
-      </div>
+      <TagsCards tag={props.tag} />
     </ContentsLayout>
   );
 };

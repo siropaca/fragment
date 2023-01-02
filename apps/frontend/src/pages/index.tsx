@@ -7,9 +7,7 @@ const Index: NextPage = () => {
   return (
     <ContentsLayout>
       {/* 記事一覧 */}
-      <div>
-        <ArticlesCards />
-      </div>
+      <ArticlesCards />
     </ContentsLayout>
   );
 };

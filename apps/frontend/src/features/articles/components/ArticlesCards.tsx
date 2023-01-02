@@ -27,7 +27,7 @@ export const ArticlesCards = (): JSX.Element => {
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
 
   return (
-    <div className='grid gap-5 lg:grid-cols-3'>
+    <div>
       {data!.articles.map((article) => (
         <ArticleCard
           key={article.id}

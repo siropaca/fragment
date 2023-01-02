@@ -45,7 +45,6 @@ const ArticlesDetail: NextPage<Props> = (props) => {
       <h1>{data.article?.title}</h1>
       <h2>{data.article?.description}</h2>
       <h2>{JSON.stringify(data.article?.tags)}</h2>
-      <hr />
       {data.article?.articleNodes.map((node) => {
         return <div key={node.id}>{node.body}</div>;
       })}
