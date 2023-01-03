@@ -16,7 +16,7 @@ const MENUS = [
     text: () => {
       return (
         <Blog
-          className='w-auto'
+          className='relative top-0.5 w-auto'
           style={{ height: '18px' }}
         />
       );
@@ -31,7 +31,7 @@ const MENUS = [
     text: () => {
       return (
         <Tools
-          className='w-auto'
+          className='relative top-0.5 w-auto'
           style={{ height: '16px' }}
         />
       );
@@ -46,7 +46,7 @@ const MENUS = [
     text: () => {
       return (
         <About
-          className='w-auto'
+          className='relative top-0.5 w-auto'
           style={{ height: '16px' }}
         />
       );
@@ -63,7 +63,7 @@ const MENUS = [
     text: () => {
       return (
         <Contact
-          className='w-auto'
+          className='relative top-0.5 w-auto'
           style={{ height: '16px' }}
         />
       );
