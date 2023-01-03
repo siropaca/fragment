@@ -12,7 +12,7 @@ const NAVIGATIONS = {
     // TODO: URLを設定する
     { name: 'Tools', href: '#' },
     { name: 'About', href: '#' },
-    { name: 'Contact', href: `href="mailto:${process.env.NEXT_PUBLIC_EMAIL}"`, target: '_blank' },
+    { name: 'Contact', href: `mailto:${process.env.NEXT_PUBLIC_EMAIL}`, target: '_blank' },
   ],
   social: [
     {

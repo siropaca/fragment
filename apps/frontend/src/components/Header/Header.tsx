@@ -55,7 +55,7 @@ const MENUS = [
   {
     a: {
       name: 'Contact',
-      href: `href="mailto:${process.env.NEXT_PUBLIC_EMAIL}"`,
+      href: `mailto:${process.env.NEXT_PUBLIC_EMAIL}`,
       target: '_blank',
       rel: 'noreferrer',
     },
