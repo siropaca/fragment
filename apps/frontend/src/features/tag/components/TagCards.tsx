@@ -2,19 +2,21 @@ import { useQuery } from '@apollo/client';
 
 import { ArticleCard } from '@/components/Surfaces';
 import { graphql } from '@/gql';
-import { Tag } from '@/gql/graphql';
+import { ArticleOrderByInput, Tag } from '@/gql/graphql';
 
 interface Props {
   tag: Tag;
 }
 
 const queryDocument = graphql(`
-  query TagArticles($where: ArticleWhereInput) {
-    articles(where: $where) {
+  query TagArticles($orderBy: ArticleOrderByInput, $where: ArticleWhereInput) {
+    articles(orderBy: $orderBy, where: $where) {
       id
       title
       description
       publishedAt
+      heroText
+      heroColor
       articleNodes {
         id
       }
@@ -25,6 +27,7 @@ const queryDocument = graphql(`
 export const TagCards = (props: Props): JSX.Element => {
   const { loading, error, data } = useQuery(queryDocument, {
     variables: {
+      orderBy: ArticleOrderByInput.IdDesc,
       where: {
         tags_contains_all: [props.tag],
       },

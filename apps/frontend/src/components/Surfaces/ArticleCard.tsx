@@ -3,30 +3,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import Link from 'next/link';
 
+import { HeroColor } from '@/gql/graphql';
 import { URL } from '@/lib/router';
 import { formatDate, utcToJstTime } from '@/utils/date';
 
 interface Props {
   id: string;
   title: string;
-  description?: string | null;
+  description?: string | undefined | null;
   publishedAt?: string;
+  heroText?: string | undefined | null;
+  heroColor: HeroColor;
   articleNodes: {
     id: string;
   }[];
 }
 
 export const ArticleCard = (props: Props): JSX.Element => {
-  const GRADATIONS = [
-    'bg-gradient-to-bl from-pink-500 via-red-500 to-yellow-500',
-    'bg-gradient-to-tr from-green-200 to-green-500',
-    'bg-gradient-to-tr from-blue-100 via-blue-300 to-blue-500',
-    'bg-gradient-to-tr from-pink-300 via-purple-300 to-indigo-400',
-    'bg-gradient-to-tr from-indigo-300 to-purple-400',
-    'bg-gradient-to-tr from-pink-400 to-pink-600',
-  ];
-
-  const random = Math.floor(Math.random() * GRADATIONS.length);
+  const COLORS: Record<HeroColor, string> = {
+    black: 'bg-gradient-to-br from-gray-900 to-gray-600 bg-gradient-to-r',
+  };
 
   return (
     <article className='flex flex-col overflow-hidden rounded-lg shadow-lg transition-shadow hover:shadow-xl'>
@@ -37,14 +33,17 @@ export const ArticleCard = (props: Props): JSX.Element => {
         <div
           className={clsx(
             'relative flex h-40 shrink-0 items-center justify-center',
-            GRADATIONS[random],
+            COLORS[props.heroColor],
           )}
         >
           <span
-            className='text-3xl font-semibold tracking-widest text-white opacity-95'
+            className={clsx(
+              'text-center font-semibold tracking-widest text-white opacity-95',
+              [...(props.heroText ?? '')].length > 6 ? 'text-2xl' : 'text-3xl',
+            )}
             style={{ textShadow: '1px 1px 4px rgb(0 0 0 / 20%)' }}
           >
-            Next.js
+            {props.heroText}
           </span>
 
           {/*<img*/}
