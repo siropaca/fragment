@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { HeroColor } from '@/gql/graphql';
 import { URL } from '@/lib/router';
 import { formatDate, utcToJstTime } from '@/utils/date';
+import { countText, hasJa } from '@/utils/text';
 
 interface Props {
   id: string;
@@ -32,25 +33,25 @@ export const ArticleCard = (props: Props): JSX.Element => {
       >
         <div
           className={clsx(
-            'relative flex h-40 shrink-0 items-center justify-center',
+            'relative flex h-40 shrink-0 items-center justify-center overflow-hidden',
             COLORS[props.heroColor],
           )}
         >
+          {/*<img*/}
+          {/*  className='absolute inset-0 object-cover'*/}
+          {/*  src='/heros/1.png'*/}
+          {/*  alt='#'*/}
+          {/*/>*/}
+
           <span
             className={clsx(
-              'text-center font-semibold tracking-widest text-white opacity-95',
-              [...(props.heroText ?? '')].length > 6 ? 'text-2xl' : 'text-3xl',
+              'text-center indent-1 font-semibold tracking-widest text-white opacity-90',
+              hasJa(props.heroText) && countText(props.heroText) > 6 ? 'text-2xl' : 'text-3xl',
             )}
             style={{ textShadow: '1px 1px 4px rgb(0 0 0 / 20%)' }}
           >
             {props.heroText}
           </span>
-
-          {/*<img*/}
-          {/*  className='h-full w-full object-cover'*/}
-          {/*  src='/heros/1.png'*/}
-          {/*  alt='#'*/}
-          {/*/>*/}
         </div>
 
         <div className='h-full bg-white p-4 dark:bg-zinc-800'>
