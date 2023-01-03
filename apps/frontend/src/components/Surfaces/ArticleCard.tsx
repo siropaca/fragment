@@ -52,8 +52,10 @@ export const ArticleCard = (props: Props): JSX.Element => {
             </div>
           )}
 
-          <div className='mt-3 text-sm tracking-widest text-gray-400 dark:text-gray-500'>
-            <span>{formatDate(utcToJstTime(new Date(props.publishedAt!)))}</span>
+          <div className='mt-3 text-sm text-gray-400 dark:text-gray-500'>
+            <time className='tracking-widest'>
+              {formatDate(utcToJstTime(new Date(props.publishedAt!)))}
+            </time>
 
             <span>
               <FontAwesomeIcon

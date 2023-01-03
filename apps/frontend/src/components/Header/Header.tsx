@@ -75,7 +75,7 @@ export const Header = (): JSX.Element => {
     <header className='sticky top-0 z-10 h-11 border-b border-gray-100 bg-white dark:border-zinc-700 dark:bg-zinc-800 md:h-16'>
       <div className='mx-auto flex h-full w-full items-center justify-between px-4 md:px-8'>
         <Link href={URL.root()}>
-          <Logo className='relative top-0.5 h-7 w-auto' />
+          <Logo className='relative top-0.5 h-6 w-auto md:h-7' />
           <span className='sr-only'>{siteName}</span>
         </Link>
 

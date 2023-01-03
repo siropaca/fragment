@@ -7,12 +7,10 @@ interface Props {
 }
 
 const queryDocument = graphql(`
-  query Article($where: ArticleWhereUniqueInput!) {
+  query ArticleDetail($where: ArticleWhereUniqueInput!) {
     article(where: $where) {
       id
-      title
       description
-      tags
       articleNodes {
         id
         body
@@ -40,9 +38,7 @@ export const ArticleDetail = (props: Props): JSX.Element => {
 
   return (
     <div>
-      <h1>{data.article?.title}</h1>
       <h2>{data.article?.description}</h2>
-      <h2>{JSON.stringify(data.article?.tags)}</h2>
       {data.article?.articleNodes.map((node) => {
         return <div key={node.id}>{node.body}</div>;
       })}
