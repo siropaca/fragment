@@ -21,10 +21,26 @@ export const URL = {
   },
 
   /**
-   * タグ検索結果
+   * タグ検索結果ページ
    */
   tagResult(tag: string, withOrigin?: boolean) {
     const path = `/tag/${tag}`;
+    return withOrigin ? URL.withOrigin(path) : path;
+  },
+
+  /**
+   * Toolsページ
+   */
+  tools(withOrigin?: boolean) {
+    const path = '/tools';
+    return withOrigin ? URL.withOrigin(path) : path;
+  },
+
+  /**
+   * Aboutページ
+   */
+  about(withOrigin?: boolean) {
+    const path = '/about';
     return withOrigin ? URL.withOrigin(path) : path;
   },
 

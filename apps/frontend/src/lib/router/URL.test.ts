@@ -40,6 +40,24 @@ describe('URL', () => {
   });
 
   /**
+   * tools()
+   */
+  describe('tools()', () => {
+    it('正しいパスが返るか', () => {
+      expect(URL.tools()).toEqual('/tools');
+    });
+  });
+
+  /**
+   * about()
+   */
+  describe('about()', () => {
+    it('正しいパスが返るか', () => {
+      expect(URL.about()).toEqual('/about');
+    });
+  });
+
+  /**
    * notfound()
    */
   describe('notfound()', () => {

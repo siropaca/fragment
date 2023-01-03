@@ -9,9 +9,8 @@ import { URL } from '@/lib/router';
 const NAVIGATIONS = {
   main: [
     { name: 'Blog', href: URL.blog() },
-    // TODO: URLを設定する
-    { name: 'Tools', href: '#' },
-    { name: 'About', href: '#' },
+    { name: 'Tools', href: URL.tools() },
+    { name: 'About', href: URL.about() },
     { name: 'Contact', href: `mailto:${process.env.NEXT_PUBLIC_EMAIL}`, target: '_blank' },
   ],
   social: [

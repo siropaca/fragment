@@ -22,11 +22,10 @@ const MENUS = [
       );
     },
   },
-  // TODO: ページを追加する
   {
     a: {
       name: 'Tools',
-      href: '#',
+      href: URL.tools(),
     },
     text: () => {
       return (
@@ -37,11 +36,10 @@ const MENUS = [
       );
     },
   },
-  // TODO: ページを追加する
   {
     a: {
       name: 'About',
-      href: '#',
+      href: URL.about(),
     },
     text: () => {
       return (
