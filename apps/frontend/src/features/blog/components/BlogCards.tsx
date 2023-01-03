@@ -8,8 +8,11 @@ const queryDocument = graphql(`
     articles {
       id
       title
-      tags
       description
+      publishedAt
+      articleNodes {
+        id
+      }
     }
   }
 `);

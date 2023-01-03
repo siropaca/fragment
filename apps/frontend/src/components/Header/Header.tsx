@@ -7,8 +7,6 @@ import Link from 'next/link';
 
 import { URL } from '@/lib/router';
 
-const HEADER_HEIGHT = '62px';
-
 const MENUS = [
   {
     a: {
@@ -64,11 +62,8 @@ export const Header = (): JSX.Element => {
   const siteName = process.env.NEXT_PUBLIC_SITE_NAME;
 
   return (
-    <header
-      className='border-b'
-      style={{ height: HEADER_HEIGHT }}
-    >
-      <div className='mx-auto flex h-full w-full items-center justify-between px-8'>
+    <header className='h-11 border-b md:h-16'>
+      <div className='mx-auto flex h-full w-full items-center justify-between px-4 md:px-8'>
         <Link href={URL.root()}>
           <Image
             src='/logo_b.svg'
@@ -76,7 +71,7 @@ export const Header = (): JSX.Element => {
             width={150}
             height={27}
             priority
-            className='relative top-1'
+            className='relative top-0.5'
           />
         </Link>
 
@@ -85,7 +80,6 @@ export const Header = (): JSX.Element => {
         <span className='cursor-pointer hover:opacity-50 lg:hidden'>
           <FontAwesomeIcon
             icon={faBars}
-            className='text-gray-700'
             size='xl'
           />
         </span>

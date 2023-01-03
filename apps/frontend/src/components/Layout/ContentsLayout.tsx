@@ -18,7 +18,7 @@ export const ContentsLayout = (props: Props): JSX.Element => {
 
       <div className='bg-gray-50'>
         <main
-          className='mx-auto py-6 px-8'
+          className='mx-auto py-6 px-4 md:px-8'
           style={{ maxWidth: CONTENTS_MAX_WIDTH }}
         >
           {props.children}

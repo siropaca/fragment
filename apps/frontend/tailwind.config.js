@@ -27,5 +27,8 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    // Doc: https://github.com/tailwindlabs/tailwindcss-line-clamp
+    require('@tailwindcss/line-clamp'),
+  ],
 };
