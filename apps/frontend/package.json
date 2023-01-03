@@ -10,6 +10,7 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "lint": "next lint",
+    "lint:fix": "eslint --ignore-path ../../.gitignore --fix './**/*.{js,ts,tsx}'",
     "codegen": "graphql-codegen --config codegen.ts",
     "codegen:watch": "graphql-codegen --watch"
   },
