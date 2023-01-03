@@ -67,7 +67,7 @@ export const Footer = (): JSX.Element => {
             >
               <Link
                 {...item}
-                className='text-base text-gray-500 hover:text-gray-900'
+                className='text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-300'
               >
                 {item.name}
               </Link>
@@ -82,7 +82,7 @@ export const Footer = (): JSX.Element => {
               href={item.href}
               target='_blank'
               rel='noreferrer'
-              className='text-gray-400 hover:text-gray-500'
+              className='text-gray-400 dark:text-gray-400'
             >
               <item.icon />
               <span className='sr-only'>{item.icon.name}</span>
@@ -90,7 +90,7 @@ export const Footer = (): JSX.Element => {
           ))}
         </div>
 
-        <p className='mt-8 text-center text-base text-gray-400'>
+        <p className='mt-8 text-center text-base text-gray-400 dark:text-gray-500'>
           &copy; {currentYear} {siteName}, Inc. All rights reserved.
         </p>
       </div>
