@@ -4,16 +4,18 @@ import { URL } from '@/lib/router';
 
 export interface HeadProps {
   title?: string;
-  description?: string;
+  description?: string | undefined | null;
   pageUrl: string;
   pageType:
     | 'blog' // ブログのトップページ
     | 'article'; // 記事ページなど、WebサイトのTOP以外のページ
 }
 
-export const Head = ({ description = '', ...props }: HeadProps): JSX.Element => {
+export const Head = (props: HeadProps): JSX.Element => {
   const siteName = process.env.NEXT_PUBLIC_SITE_NAME;
   const pageTitle = props.title ? `${props.title} - ${siteName}` : siteName;
+
+  const description = props.description ?? '';
 
   return (
     <NextHead>

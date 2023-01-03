@@ -10,12 +10,16 @@ interface Props {
 }
 
 const TagsResults: NextPage<Props> = (props) => {
+  const title = `"${props.tag}" のタグがついた記事`;
+
   return (
     <ContentsLayout
+      title={props.tag}
+      description={title}
       pageType='article'
       pageUrl={URL.tagsResults(props.tag, true)}
     >
-      <h2 className='mb-6'>{`"${props.tag}" のタグがついた記事`}</h2>
+      <h2 className='mb-6'>{title}</h2>
 
       <section className='grid gap-5 md:grid-cols-2 lg:grid-cols-4'>
         <TagsCards tag={props.tag} />

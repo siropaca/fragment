@@ -48,7 +48,6 @@ export const ArticleCard = (props: Props): JSX.Element => {
             Next.js
           </span>
 
-          <span></span>
           {/*<img*/}
           {/*  className='h-full w-full object-cover'*/}
           {/*  src='/heros/1.png'*/}
