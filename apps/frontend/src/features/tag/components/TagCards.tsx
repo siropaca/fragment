@@ -4,6 +4,10 @@ import { ArticleCard } from '@/components/Surfaces';
 import { graphql } from '@/gql';
 import { Tag } from '@/gql/graphql';
 
+interface Props {
+  tag: Tag;
+}
+
 const queryDocument = graphql(`
   query TagArticles($where: ArticleWhereInput) {
     articles(where: $where) {
@@ -17,10 +21,6 @@ const queryDocument = graphql(`
     }
   }
 `);
-
-interface Props {
-  tag: Tag;
-}
 
 export const TagCards = (props: Props): JSX.Element => {
   const { loading, error, data } = useQuery(queryDocument, {
