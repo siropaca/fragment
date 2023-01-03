@@ -58,10 +58,12 @@ export const ArticleCard = (props: Props): JSX.Element => {
           <div className='text-lg font-semibold line-clamp-2'>{props.title}</div>
 
           {props.description && (
-            <div className='mt-1 text-gray-500 line-clamp-2'>{props.description}</div>
+            <div className='mt-1 text-gray-500 line-clamp-2 dark:text-gray-400'>
+              {props.description}
+            </div>
           )}
 
-          <div className='mt-3 text-sm tracking-widest text-gray-400'>
+          <div className='mt-3 text-sm tracking-widest text-gray-400 dark:text-gray-500'>
             <span>{formatDate(utcToJstTime(new Date(props.publishedAt!)))}</span>
 
             <span>

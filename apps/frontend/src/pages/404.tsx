@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ContentsLayout } from '@/components/Layout';
 import { URL } from '@/lib/router';
 
-const Custom404: NextPage = () => {
+const Custom404Page: NextPage = () => {
   return (
     <ContentsLayout
       title='404 not found'
@@ -42,4 +42,4 @@ const Custom404: NextPage = () => {
   );
 };
 
-export default Custom404;
+export default Custom404Page;

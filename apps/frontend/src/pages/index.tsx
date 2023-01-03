@@ -4,7 +4,7 @@ import { ContentsLayout } from '@/components/Layout';
 import { BlogCards } from '@/features/blog/components';
 import { URL } from '@/lib/router';
 
-const Index: NextPage = () => {
+const IndexPage: NextPage = () => {
   return (
     <ContentsLayout
       // TODO: descriptionを設定する
@@ -19,4 +19,4 @@ const Index: NextPage = () => {
   );
 };
 
-export default Index;
+export default IndexPage;
