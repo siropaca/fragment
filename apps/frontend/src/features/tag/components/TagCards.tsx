@@ -5,7 +5,7 @@ import { graphql } from '@/gql';
 import { Tag } from '@/gql/graphql';
 
 const queryDocument = graphql(`
-  query TagsArticles($where: ArticleWhereInput) {
+  query TagArticles($where: ArticleWhereInput) {
     articles(where: $where) {
       id
       title
@@ -22,7 +22,7 @@ interface Props {
   tag: Tag;
 }
 
-export const TagsCards = (props: Props): JSX.Element => {
+export const TagCards = (props: Props): JSX.Element => {
   const { loading, error, data } = useQuery(queryDocument, {
     variables: {
       where: {
