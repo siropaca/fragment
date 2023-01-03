@@ -23,14 +23,13 @@ export const ArticleCard = (props: Props): JSX.Element => {
     'bg-gradient-to-tr from-blue-100 via-blue-300 to-blue-500',
     'bg-gradient-to-tr from-pink-300 via-purple-300 to-indigo-400',
     'bg-gradient-to-tr from-indigo-300 to-purple-400',
-    'bg-gradient-to-tr from-yellow-600 to-red-600',
     'bg-gradient-to-tr from-pink-400 to-pink-600',
   ];
 
   const random = Math.floor(Math.random() * GRADATIONS.length);
 
   return (
-    <article className='flex flex-col overflow-hidden rounded-lg bg-white shadow-lg'>
+    <article className='flex flex-col overflow-hidden rounded-lg shadow-lg transition-shadow hover:shadow-xl'>
       <Link
         href={URL.articleDetail(props.id)}
         className='h-full'
@@ -48,7 +47,6 @@ export const ArticleCard = (props: Props): JSX.Element => {
             Next.js
           </span>
 
-          <span></span>
           {/*<img*/}
           {/*  className='h-full w-full object-cover'*/}
           {/*  src='/heros/1.png'*/}
@@ -56,7 +54,7 @@ export const ArticleCard = (props: Props): JSX.Element => {
           {/*/>*/}
         </div>
 
-        <div className='p-4'>
+        <div className='h-full bg-white p-4 dark:bg-zinc-800'>
           <div className='text-lg font-semibold line-clamp-2'>{props.title}</div>
 
           {props.description && (

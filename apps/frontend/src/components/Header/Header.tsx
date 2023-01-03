@@ -2,58 +2,71 @@ import process from 'process';
 
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Image from 'next/image';
 import Link from 'next/link';
 
+import { About, Blog, Contact, Logo, Tools } from '@/components/assets';
 import { URL } from '@/lib/router';
 
 const MENUS = [
   {
     a: {
+      name: 'Blog',
       href: URL.blog(),
     },
-    img: {
-      src: '/texts/Blog.svg',
-      alt: 'Blog',
-      width: 47,
-      height: 20,
+    text: () => {
+      return (
+        <Blog
+          className='relative top-0.5 w-auto'
+          style={{ height: '18px' }}
+        />
+      );
     },
   },
   // TODO: ページを追加する
   {
     a: {
-      href: URL.root(),
+      name: 'Tools',
+      href: '#',
     },
-    img: {
-      src: '/texts/Tools.svg',
-      alt: 'Tools',
-      width: 58,
-      height: 17,
+    text: () => {
+      return (
+        <Tools
+          className='relative top-0.5 w-auto'
+          style={{ height: '16px' }}
+        />
+      );
     },
   },
   // TODO: ページを追加する
   {
     a: {
-      href: URL.root(),
+      name: 'About',
+      href: '#',
     },
-    img: {
-      src: '/texts/About.svg',
-      alt: 'About',
-      width: 69,
-      height: 18,
+    text: () => {
+      return (
+        <About
+          className='relative top-0.5 w-auto'
+          style={{ height: '16px' }}
+        />
+      );
     },
   },
   // TODO: メールアドレスを設定する
   {
     a: {
-      href: '/texts/Contact.svg',
+      name: 'Contact',
+      href: '#',
+      target: '_blank',
       rel: 'noreferrer',
     },
-    img: {
-      src: '/texts/Contact.svg',
-      alt: 'Contact',
-      width: 87,
-      height: 17,
+    text: () => {
+      return (
+        <Contact
+          className='relative top-0.5 w-auto'
+          style={{ height: '16px' }}
+        />
+      );
     },
   },
 ];
@@ -62,17 +75,11 @@ export const Header = (): JSX.Element => {
   const siteName = process.env.NEXT_PUBLIC_SITE_NAME;
 
   return (
-    <header className='h-11 border-b md:h-16'>
+    <header className='sticky top-0 z-10 h-11 border-b border-gray-100 bg-white dark:border-zinc-700 dark:bg-zinc-800 md:h-16'>
       <div className='mx-auto flex h-full w-full items-center justify-between px-4 md:px-8'>
         <Link href={URL.root()}>
-          <Image
-            src='/logo_b.svg'
-            alt={siteName}
-            width={150}
-            height={27}
-            priority
-            className='relative top-0.5'
-          />
+          <Logo className='relative top-0.5 h-7 w-auto' />
+          <span className='sr-only'>{siteName}</span>
         </Link>
 
         {/* TODO: 実装する */}
@@ -93,8 +100,8 @@ export const Header = (): JSX.Element => {
                 {...menu.a}
                 className='hover:opacity-50'
               >
-                {/* eslint-disable-next-line jsx-a11y/alt-text */}
-                <Image {...menu.img} />
+                <menu.text />
+                <span className='sr-only'>{menu.a.name}</span>
               </Link>
             );
           })}

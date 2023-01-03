@@ -31,11 +31,11 @@ describe('URL', () => {
   });
 
   /**
-   * tagsResults()
+   * tagResults()
    */
-  describe('tagsResults()', () => {
+  describe('tagResults()', () => {
     it('正しいパスが返るか', () => {
-      expect(URL.tagsResults('JavaScript')).toEqual('/tags/JavaScript');
+      expect(URL.tagResults('JavaScript')).toEqual('/tag/JavaScript');
     });
   });
 

@@ -43,6 +43,8 @@ const ArticlesDetail: NextPage<Props> = (props) => {
 
   return (
     <ContentsLayout
+      title={data.article.title}
+      description={data.article.description}
       pageType='article'
       pageUrl={URL.articleDetail(data.article.id, true)}
     >

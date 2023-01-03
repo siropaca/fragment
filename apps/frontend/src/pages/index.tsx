@@ -7,6 +7,8 @@ import { URL } from '@/lib/router';
 const Index: NextPage = () => {
   return (
     <ContentsLayout
+      // TODO: descriptionを設定する
+      description=''
       pageType='blog'
       pageUrl={URL.root(true)}
     >

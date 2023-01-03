@@ -23,8 +23,8 @@ export const URL = {
   /**
    * タグ検索結果
    */
-  tagsResults(tag: string, withOrigin?: boolean) {
-    const path = `/tags/${tag}`;
+  tagResults(tag: string, withOrigin?: boolean) {
+    const path = `/tag/${tag}`;
     return withOrigin ? URL.withOrigin(path) : path;
   },
 

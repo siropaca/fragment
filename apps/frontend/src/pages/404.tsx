@@ -7,6 +7,8 @@ import { URL } from '@/lib/router';
 const Custom404: NextPage = () => {
   return (
     <ContentsLayout
+      title='404 not found'
+      description='404 not found'
       pageType='article'
       pageUrl={URL.notfound(true)}
     >

@@ -19,7 +19,7 @@ class MyDocument extends Document {
       <Html lang='ja'>
         <Head />
 
-        <body className='tracking-wide text-gray-700'>
+        <body className='tracking-wide text-gray-700 dark:bg-zinc-800 dark:text-white'>
           <Main />
           <NextScript />
         </body>
