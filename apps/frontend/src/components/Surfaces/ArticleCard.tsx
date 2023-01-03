@@ -28,7 +28,7 @@ export const ArticleCard = (props: Props): JSX.Element => {
         <div className='relative flex h-40 shrink-0 items-center justify-center overflow-hidden'>
           <img
             className='absolute inset-0 m-auto object-cover'
-            src='/heros/6.png'
+            src='/heros/01_Royal_Heath.png'
             alt='#'
           />
 

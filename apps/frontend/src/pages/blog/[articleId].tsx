@@ -60,7 +60,7 @@ const ArticlesDetailPage: NextPage<Props> = (props) => {
         <div className='relative h-48 overflow-hidden md:h-56 lg:h-60'>
           <img
             className='absolute inset-0 m-auto object-cover'
-            src='/heros/6.png'
+            src='/heros/01_Royal_Heath.png'
             alt='#'
           />
 
@@ -70,7 +70,7 @@ const ArticlesDetailPage: NextPage<Props> = (props) => {
           ></div>
 
           <div
-            className='absolute inset-x-0 bottom-0 px-4 pb-4 pt-10 text-white md:px-8'
+            className='absolute inset-x-0 bottom-0 px-4 pb-4 pt-10 text-white md:px-8 md:pb-5 lg:pb-6'
             style={{ background: 'linear-gradient(180deg,transparent 0,rgba(0,0,0,.65))' }}
           >
             <h1 className='mb-1.5 text-xl font-semibold leading-relaxed md:text-2xl'>
