@@ -19,6 +19,7 @@ const queryDocument = graphql(`
       title
       description
       tags
+      hero
       publishedAt
       updatedAt
       articleNodes {
@@ -60,7 +61,7 @@ const ArticlesDetailPage: NextPage<Props> = (props) => {
         <div className='relative h-48 overflow-hidden md:h-56 lg:h-60'>
           <img
             className='absolute inset-0 m-auto object-cover'
-            src='/heros/01_Royal_Heath.png'
+            src={`/heros/${data.article.hero}.png`}
             alt='#'
           />
 

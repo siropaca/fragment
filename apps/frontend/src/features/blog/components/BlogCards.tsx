@@ -11,6 +11,7 @@ const queryDocument = graphql(`
       title
       description
       publishedAt
+      hero
       heroText
       articleNodes {
         id
