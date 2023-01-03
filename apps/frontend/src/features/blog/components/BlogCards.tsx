@@ -12,7 +12,6 @@ const queryDocument = graphql(`
       description
       publishedAt
       heroText
-      heroColor
       articleNodes {
         id
       }
