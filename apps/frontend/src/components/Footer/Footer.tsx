@@ -1,14 +1,16 @@
-import * as process from 'process';
-
 import { faGithub, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
+
+import { URL } from '@/lib/router';
 
 const NAVIGATIONS = {
   main: [
-    { name: 'Blog', href: '#' },
+    { name: 'Blog', href: URL.blog() },
+    // TODO: URLを設定する
     { name: 'Tools', href: '#' },
     { name: 'About', href: '#' },
-    { name: 'Contact', href: '#' },
+    { name: 'Contact', href: '#', target: '_blank' },
   ],
   social: [
     {
@@ -63,12 +65,12 @@ export const Footer = (): JSX.Element => {
               key={item.name}
               className='px-5 py-2'
             >
-              <a
-                href={item.href}
+              <Link
+                {...item}
                 className='text-base text-gray-500 hover:text-gray-900'
               >
                 {item.name}
-              </a>
+              </Link>
             </div>
           ))}
         </nav>
@@ -78,9 +80,12 @@ export const Footer = (): JSX.Element => {
             <a
               key={item.name}
               href={item.href}
+              target='_blank'
+              rel='noreferrer'
               className='text-gray-400 hover:text-gray-500'
             >
               <item.icon />
+              <span className='sr-only'>{item.icon.name}</span>
             </a>
           ))}
         </div>

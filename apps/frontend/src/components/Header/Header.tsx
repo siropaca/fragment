@@ -22,7 +22,7 @@ const MENUS = [
   // TODO: ページを追加する
   {
     a: {
-      href: URL.root(),
+      href: '#',
     },
     img: {
       src: '/texts/Tools.svg',
@@ -34,7 +34,7 @@ const MENUS = [
   // TODO: ページを追加する
   {
     a: {
-      href: URL.root(),
+      href: '#',
     },
     img: {
       src: '/texts/About.svg',
@@ -46,7 +46,8 @@ const MENUS = [
   // TODO: メールアドレスを設定する
   {
     a: {
-      href: '/texts/Contact.svg',
+      href: '#',
+      target: '_blank',
       rel: 'noreferrer',
     },
     img: {
@@ -95,6 +96,7 @@ export const Header = (): JSX.Element => {
               >
                 {/* eslint-disable-next-line jsx-a11y/alt-text */}
                 <Image {...menu.img} />
+                <span className='sr-only'>{menu.img.alt}</span>
               </Link>
             );
           })}
