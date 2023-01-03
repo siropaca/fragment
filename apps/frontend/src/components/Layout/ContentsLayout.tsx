@@ -1,18 +1,17 @@
 import { Footer } from '@/components/Footer';
-import { Head } from '@/components/Head';
+import { HeadProps, Head } from '@/components/Head';
 import { Header } from '@/components/Header';
 
 const CONTENTS_MAX_WIDTH = '1192px';
 
-interface Props {
+interface Props extends HeadProps {
   children: React.ReactNode;
-  title?: string;
 }
 
-export const ContentsLayout = (props: Props): JSX.Element => {
+export const ContentsLayout = ({ children, ...headProps }: Props): JSX.Element => {
   return (
     <>
-      <Head title={props.title} />
+      <Head {...headProps} />
 
       <Header />
 
@@ -21,7 +20,7 @@ export const ContentsLayout = (props: Props): JSX.Element => {
           className='mx-auto py-6 px-4 md:px-8'
           style={{ maxWidth: CONTENTS_MAX_WIDTH }}
         >
-          {props.children}
+          {children}
         </main>
       </div>
 

@@ -3,6 +3,7 @@ import { GetServerSideProps, NextPage } from 'next';
 
 import { ContentsLayout } from '@/components/Layout';
 import { graphql } from '@/gql';
+import { URL } from '@/lib/router';
 
 interface Props {
   articleId: string;
@@ -41,7 +42,10 @@ const ArticlesDetail: NextPage<Props> = (props) => {
   }
 
   return (
-    <ContentsLayout>
+    <ContentsLayout
+      pageType='article'
+      pageUrl={URL.articleDetail(data.article.id, true)}
+    >
       <h1>{data.article?.title}</h1>
       <h2>{data.article?.description}</h2>
       <h2>{JSON.stringify(data.article?.tags)}</h2>

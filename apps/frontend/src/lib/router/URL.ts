@@ -2,33 +2,42 @@ export const URL = {
   /**
    * ルートページ
    */
-  root() {
-    return '/';
+  root(withOrigin?: boolean) {
+    const path = '/';
+    return withOrigin ? URL.withOrigin(path) : path;
   },
 
   /**
    * 記事ページ
    */
-  blog() {
-    return `/blog`;
+  blog(withOrigin?: boolean) {
+    const path = `/blog`;
+    return withOrigin ? URL.withOrigin(path) : path;
   },
 
-  articleDetail(articleId: string) {
-    return `/blog/${articleId}`;
+  articleDetail(articleId: string, withOrigin?: boolean) {
+    const path = `/blog/${articleId}`;
+    return withOrigin ? URL.withOrigin(path) : path;
   },
 
   /**
    * タグ検索結果
    */
-  tagsResults(tag: string) {
-    return `/tags/${tag}`;
+  tagsResults(tag: string, withOrigin?: boolean) {
+    const path = `/tags/${tag}`;
+    return withOrigin ? URL.withOrigin(path) : path;
   },
 
   /**
    * 404ページ
    */
-  notfound() {
-    return '/404';
+  notfound(withOrigin?: boolean) {
+    const path = '/404';
+    return withOrigin ? URL.withOrigin(path) : path;
+  },
+
+  withOrigin(path: string): string {
+    return process.env.NEXT_PUBLIC_SITE_ORIGIN + path;
   },
 
   //----------------------------------------------------------------------------
