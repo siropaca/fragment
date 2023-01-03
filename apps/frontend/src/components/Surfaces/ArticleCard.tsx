@@ -29,7 +29,7 @@ export const ArticleCard = (props: Props): JSX.Element => {
   const random = Math.floor(Math.random() * GRADATIONS.length);
 
   return (
-    <article className='flex flex-col overflow-hidden rounded-lg bg-white shadow-lg transition-shadow hover:shadow-xl'>
+    <article className='flex flex-col overflow-hidden rounded-lg shadow-lg transition-shadow hover:shadow-xl'>
       <Link
         href={URL.articleDetail(props.id)}
         className='h-full'
@@ -54,7 +54,7 @@ export const ArticleCard = (props: Props): JSX.Element => {
           {/*/>*/}
         </div>
 
-        <div className='p-4'>
+        <div className='h-full bg-white p-4 dark:bg-zinc-800'>
           <div className='text-lg font-semibold line-clamp-2'>{props.title}</div>
 
           {props.description && (

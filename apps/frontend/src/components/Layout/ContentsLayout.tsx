@@ -15,7 +15,7 @@ export const ContentsLayout = ({ children, ...headProps }: Props): JSX.Element =
 
       <Header />
 
-      <div className='bg-gray-50'>
+      <div className='bg-gray-50 dark:bg-zinc-900'>
         <main
           className='mx-auto py-6 px-4 md:px-8'
           style={{ maxWidth: CONTENTS_MAX_WIDTH }}

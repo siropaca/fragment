@@ -54,7 +54,7 @@ export const Footer = (): JSX.Element => {
   const siteName = process.env.NEXT_PUBLIC_SITE_NAME;
 
   return (
-    <footer className='bg-white'>
+    <footer className='bg-white dark:bg-zinc-800'>
       <div className='mx-auto max-w-7xl overflow-hidden py-12 px-4 sm:px-6 lg:px-8'>
         <nav
           className='-mx-5 -my-2 flex grow flex-wrap justify-center'
