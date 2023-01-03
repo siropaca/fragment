@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client';
 import { GetServerSideProps, NextPage } from 'next';
 
 import { ContentsLayout } from '@/components/Layout';
+import { ArticleDetail } from '@/features/blog/components';
 import { graphql } from '@/gql';
 import { URL } from '@/lib/router';
 
@@ -24,7 +25,7 @@ const queryDocument = graphql(`
   }
 `);
 
-const ArticlesDetail: NextPage<Props> = (props) => {
+const ArticlesDetailPage: NextPage<Props> = (props) => {
   const { loading, error, data } = useQuery(queryDocument, {
     variables: {
       where: {
@@ -38,7 +39,7 @@ const ArticlesDetail: NextPage<Props> = (props) => {
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
 
   if (!data || !data.article) {
-    return <p>Sorry not found.</p>;
+    return <p>Empty data</p>;
   }
 
   return (
@@ -48,17 +49,12 @@ const ArticlesDetail: NextPage<Props> = (props) => {
       pageType='article'
       pageUrl={URL.articleDetail(data.article.id, true)}
     >
-      <h1>{data.article?.title}</h1>
-      <h2>{data.article?.description}</h2>
-      <h2>{JSON.stringify(data.article?.tags)}</h2>
-      {data.article?.articleNodes.map((node) => {
-        return <div key={node.id}>{node.body}</div>;
-      })}
+      <ArticleDetail articleId={props.articleId} />
     </ContentsLayout>
   );
 };
 
-export default ArticlesDetail;
+export default ArticlesDetailPage;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   return {

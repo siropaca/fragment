@@ -9,7 +9,7 @@ interface Props {
   tag: Tag;
 }
 
-const TagResults: NextPage<Props> = (props) => {
+const TagResultPage: NextPage<Props> = (props) => {
   const title = `"${props.tag}" のタグがついた記事`;
 
   return (
@@ -17,7 +17,7 @@ const TagResults: NextPage<Props> = (props) => {
       title={props.tag}
       description={title}
       pageType='article'
-      pageUrl={URL.tagResults(props.tag, true)}
+      pageUrl={URL.tagResult(props.tag, true)}
     >
       <h2 className='mb-6'>{title}</h2>
 
@@ -28,7 +28,7 @@ const TagResults: NextPage<Props> = (props) => {
   );
 };
 
-export default TagResults;
+export default TagResultPage;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
