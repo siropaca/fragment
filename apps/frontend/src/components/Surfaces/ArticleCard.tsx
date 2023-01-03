@@ -1,14 +1,21 @@
+import { faMessage } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import Link from 'next/link';
 
 import { Tag } from '@/gql/graphql';
 import { URL } from '@/lib/router';
+import { formatDate, utcToJstTime } from '@/utils/date';
 
 interface Props {
   id: string;
   title: string;
   tags: Array<Tag>;
   description?: string | null;
+  publishedAt?: string;
+  articleNodes: {
+    id: string;
+  }[];
 }
 
 export const ArticleCard = (props: Props): JSX.Element => {
@@ -30,7 +37,10 @@ export const ArticleCard = (props: Props): JSX.Element => {
 
   return (
     <article className='flex flex-col overflow-hidden rounded-lg bg-white shadow-lg'>
-      <Link href={URL.articleDetail(props.id)}>
+      <Link
+        href={URL.articleDetail(props.id)}
+        className='h-full'
+      >
         <div
           className={clsx(
             'relative flex h-40 shrink-0 items-center justify-center',
@@ -46,7 +56,7 @@ export const ArticleCard = (props: Props): JSX.Element => {
 
           <span></span>
           {/*<img*/}
-          {/*  className='h-48 w-full object-cover'*/}
+          {/*  className='h-full w-full object-cover'*/}
           {/*  src='/heros/1.png'*/}
           {/*  alt='#'*/}
           {/*/>*/}
@@ -55,7 +65,21 @@ export const ArticleCard = (props: Props): JSX.Element => {
         <div className='p-4'>
           <div className='text-lg font-semibold'>{props.title}</div>
 
-          <div className='mt-1 text-sm text-gray-500'>{props.description}</div>
+          <div className='mt-1 text-gray-500'>{props.description}</div>
+
+          <div className='mt-2.5 text-sm tracking-widest text-gray-500'>
+            <span>{formatDate(utcToJstTime(new Date(props.publishedAt!)))}</span>
+
+            <span>
+              <FontAwesomeIcon
+                icon={faMessage}
+                className='relative ml-3 mr-1.5'
+                size='sm'
+                style={{ top: '1px' }}
+              />
+              {props.articleNodes.length}
+            </span>
+          </div>
 
           <div className='mt-2.5 flex gap-4 text-sm font-medium text-indigo-600'>
             {props.tags.map((tag) => {
