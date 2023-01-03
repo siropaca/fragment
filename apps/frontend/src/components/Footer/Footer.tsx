@@ -1,3 +1,5 @@
+import process from 'process';
+
 import { faGithub, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
@@ -10,12 +12,12 @@ const NAVIGATIONS = {
     // TODO: URLを設定する
     { name: 'Tools', href: '#' },
     { name: 'About', href: '#' },
-    { name: 'Contact', href: '#', target: '_blank' },
+    { name: 'Contact', href: `href="mailto:${process.env.NEXT_PUBLIC_EMAIL}"`, target: '_blank' },
   ],
   social: [
     {
       name: 'GitHub',
-      href: '#',
+      href: process.env.NEXT_PUBLIC_GITHUB,
       icon: () => (
         <FontAwesomeIcon
           icon={faGithub}
@@ -26,7 +28,7 @@ const NAVIGATIONS = {
     },
     {
       name: 'Twitter',
-      href: '#',
+      href: process.env.NEXT_PUBLIC_TWITTER,
       icon: () => (
         <FontAwesomeIcon
           icon={faTwitter}
@@ -37,7 +39,7 @@ const NAVIGATIONS = {
     },
     {
       name: 'Instagram',
-      href: '#',
+      href: process.env.NEXT_PUBLIC_INSTAGRAM,
       icon: () => (
         <FontAwesomeIcon
           icon={faInstagram}

@@ -52,11 +52,10 @@ const MENUS = [
       );
     },
   },
-  // TODO: メールアドレスを設定する
   {
     a: {
       name: 'Contact',
-      href: '#',
+      href: `href="mailto:${process.env.NEXT_PUBLIC_EMAIL}"`,
       target: '_blank',
       rel: 'noreferrer',
     },
