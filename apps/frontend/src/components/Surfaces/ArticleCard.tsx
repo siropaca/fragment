@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import Link from 'next/link';
 
-import { HeroColor } from '@/gql/graphql';
 import { URL } from '@/lib/router';
 import { formatDate, utcToJstTime } from '@/utils/date';
+import { countText, hasJa } from '@/utils/text';
 
 interface Props {
   id: string;
@@ -13,44 +13,34 @@ interface Props {
   description?: string | undefined | null;
   publishedAt?: string;
   heroText?: string | undefined | null;
-  heroColor: HeroColor;
   articleNodes: {
     id: string;
   }[];
 }
 
 export const ArticleCard = (props: Props): JSX.Element => {
-  const COLORS: Record<HeroColor, string> = {
-    black: 'bg-gradient-to-br from-gray-900 to-gray-600 bg-gradient-to-r',
-  };
-
   return (
     <article className='flex flex-col overflow-hidden rounded-lg shadow-lg transition-shadow hover:shadow-xl'>
       <Link
         href={URL.articleDetail(props.id)}
         className='h-full'
       >
-        <div
-          className={clsx(
-            'relative flex h-40 shrink-0 items-center justify-center',
-            COLORS[props.heroColor],
-          )}
-        >
+        <div className='relative flex h-40 shrink-0 items-center justify-center overflow-hidden'>
+          <img
+            className='absolute inset-0 m-auto object-cover'
+            src='/heros/01_Royal_Heath.png'
+            alt='#'
+          />
+
           <span
             className={clsx(
-              'text-center font-semibold tracking-widest text-white opacity-95',
-              [...(props.heroText ?? '')].length > 6 ? 'text-2xl' : 'text-3xl',
+              'text-center indent-1 font-semibold tracking-widest text-white opacity-90',
+              hasJa(props.heroText) && countText(props.heroText) > 6 ? 'text-2xl' : 'text-3xl',
             )}
-            style={{ textShadow: '1px 1px 4px rgb(0 0 0 / 20%)' }}
+            style={{ textShadow: '1px 1px 4px rgb(0 0 0 / 25%)' }}
           >
             {props.heroText}
           </span>
-
-          {/*<img*/}
-          {/*  className='h-full w-full object-cover'*/}
-          {/*  src='/heros/1.png'*/}
-          {/*  alt='#'*/}
-          {/*/>*/}
         </div>
 
         <div className='h-full bg-white p-4 dark:bg-zinc-800'>
@@ -62,8 +52,10 @@ export const ArticleCard = (props: Props): JSX.Element => {
             </div>
           )}
 
-          <div className='mt-3 text-sm tracking-widest text-gray-400 dark:text-gray-500'>
-            <span>{formatDate(utcToJstTime(new Date(props.publishedAt!)))}</span>
+          <div className='mt-3 text-sm text-gray-400 dark:text-gray-500'>
+            <time className='tracking-widest'>
+              {formatDate(utcToJstTime(new Date(props.publishedAt!)))}
+            </time>
 
             <span>
               <FontAwesomeIcon

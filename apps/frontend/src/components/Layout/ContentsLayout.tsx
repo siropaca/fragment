@@ -5,10 +5,11 @@ import { Header } from '@/components/Header';
 const CONTENTS_MAX_WIDTH = '1192px';
 
 interface Props extends HeadProps {
+  hero?: React.ReactNode;
   children: React.ReactNode;
 }
 
-export const ContentsLayout = ({ children, ...headProps }: Props): JSX.Element => {
+export const ContentsLayout = ({ hero, children, ...headProps }: Props): JSX.Element => {
   return (
     <>
       <Head {...headProps} />
@@ -16,6 +17,8 @@ export const ContentsLayout = ({ children, ...headProps }: Props): JSX.Element =
       <Header />
 
       <div className='bg-gray-50 dark:bg-zinc-900'>
+        {hero}
+
         <main
           className='mx-auto py-6 px-4 md:px-8'
           style={{ maxWidth: CONTENTS_MAX_WIDTH }}
