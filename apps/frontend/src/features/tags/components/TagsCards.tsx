@@ -9,7 +9,6 @@ const queryDocument = graphql(`
     articles(where: $where) {
       id
       title
-      tags
       description
       publishedAt
       articleNodes {
