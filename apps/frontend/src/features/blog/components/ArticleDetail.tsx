@@ -1,7 +1,6 @@
 import { useQuery } from '@apollo/client';
-import ReactMarkdown from 'react-markdown';
-import SyntaxHighlighter from 'react-syntax-highlighter';
 
+import { Markdown } from '@/components/DataDisplay/Markdown';
 import { graphql } from '@/gql';
 
 interface Props {
@@ -50,32 +49,8 @@ export const ArticleDetail = (props: Props): JSX.Element => {
             <div
               key={node.id}
               className='overflow-hidden rounded-md bg-white p-4 dark:bg-zinc-800'
-              id='react-markdown'
             >
-              <ReactMarkdown
-                children={node.body.replace(/\n$/g, '  \n')}
-                components={{
-                  code({ node, inline, className, children, ...props }) {
-                    const matchLang = /language-(\w+)/.exec(className || '');
-                    return !inline && matchLang ? (
-                      // @ts-ignore
-                      <SyntaxHighlighter
-                        children={String(children).replace(/\n$/, '')}
-                        language={matchLang[1]}
-                        PreTag='div'
-                        {...props}
-                      />
-                    ) : (
-                      <code
-                        className={className}
-                        {...props}
-                      >
-                        {children}
-                      </code>
-                    );
-                  },
-                }}
-              />
+              <Markdown markdown={node.body} />
             </div>
           );
         })}
