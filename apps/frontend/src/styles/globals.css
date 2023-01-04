@@ -2,7 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-#react-markdown p:not(:last-child),
-#react-markdown pre:not(:last-child) {
+/**
+ * ReactMarkdown / SyntaxHighlighter
+ */
+.react-markdown p:not(:last-child),
+.react-markdown pre:not(:last-child) {
     margin-bottom: 1rem;
+}
+
+.react-markdown > pre > div > div {
+    padding: 0 !important;
+    background-color: transparent !important;
 }

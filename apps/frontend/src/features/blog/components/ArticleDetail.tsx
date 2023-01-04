@@ -43,15 +43,15 @@ export const ArticleDetail = (props: Props): JSX.Element => {
         <p className='mb-6 text-gray-500 dark:text-gray-400'>{data.article?.description}</p>
       )}
 
-      <article className='flex flex-col gap-4'>
+      <article className='flex flex-col gap-6'>
         {data.article?.articleNodes.map((node) => {
           return (
-            <div
+            <section
               key={node.id}
-              className='overflow-hidden rounded-md bg-white p-4 dark:bg-zinc-800'
+              className='overflow-hidden rounded-md border border-gray-100 bg-white p-4 text-sm dark:border-zinc-800 dark:bg-zinc-800 md:p-5'
             >
               <Markdown markdown={node.body} />
-            </div>
+            </section>
           );
         })}
       </article>
