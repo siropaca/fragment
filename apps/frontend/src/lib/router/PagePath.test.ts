@@ -1,12 +1,12 @@
-import { URL } from './URL';
+import { PagePath } from './PagePath';
 
-describe('URL', () => {
+describe('PagePath', () => {
   /**
    * root()
    */
   describe('root()', () => {
     it('正しいパスが返るか', () => {
-      expect(URL.root()).toEqual('/');
+      expect(PagePath.root()).toEqual('/');
     });
   });
 
@@ -15,7 +15,7 @@ describe('URL', () => {
    */
   describe('blog()', () => {
     it('正しいパスが返るか', () => {
-      expect(URL.blog()).toEqual('/blog');
+      expect(PagePath.blog()).toEqual('/blog');
     });
   });
 
@@ -26,7 +26,7 @@ describe('URL', () => {
     const ARTICLE_ID = 'clcby90x4jik30bzv6mekyrcc';
 
     it('正しいパスが返るか', () => {
-      expect(URL.articleDetail(ARTICLE_ID)).toEqual('/blog/clcby90x4jik30bzv6mekyrcc');
+      expect(PagePath.articleDetail(ARTICLE_ID)).toEqual('/blog/clcby90x4jik30bzv6mekyrcc');
     });
   });
 
@@ -35,7 +35,7 @@ describe('URL', () => {
    */
   describe('tagResult()', () => {
     it('正しいパスが返るか', () => {
-      expect(URL.tagResult('JavaScript')).toEqual('/tag/JavaScript');
+      expect(PagePath.tagResult('JavaScript')).toEqual('/tag/JavaScript');
     });
   });
 
@@ -44,7 +44,7 @@ describe('URL', () => {
    */
   describe('tools()', () => {
     it('正しいパスが返るか', () => {
-      expect(URL.tools()).toEqual('/tools');
+      expect(PagePath.tools()).toEqual('/tools');
     });
   });
 
@@ -53,7 +53,7 @@ describe('URL', () => {
    */
   describe('about()', () => {
     it('正しいパスが返るか', () => {
-      expect(URL.about()).toEqual('/about');
+      expect(PagePath.about()).toEqual('/about');
     });
   });
 
@@ -62,7 +62,7 @@ describe('URL', () => {
    */
   describe('notfound()', () => {
     it('正しいパスが返るか', () => {
-      expect(URL.notfound()).toEqual('/404');
+      expect(PagePath.notfound()).toEqual('/404');
     });
   });
 });

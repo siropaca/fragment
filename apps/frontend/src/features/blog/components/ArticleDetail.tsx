@@ -1,5 +1,6 @@
 import { useQuery } from '@apollo/client';
 
+import { Markdown } from '@/components/DataDisplay/Markdown';
 import { graphql } from '@/gql';
 
 interface Props {
@@ -37,11 +38,23 @@ export const ArticleDetail = (props: Props): JSX.Element => {
   }
 
   return (
-    <div>
-      <h2>{data.article?.description}</h2>
-      {data.article?.articleNodes.map((node) => {
-        return <div key={node.id}>{node.body}</div>;
-      })}
-    </div>
+    <section>
+      {data.article?.description && (
+        <p className='mb-6 text-gray-500 dark:text-gray-400'>{data.article?.description}</p>
+      )}
+
+      <article className='flex flex-col gap-6'>
+        {data.article?.articleNodes.map((node) => {
+          return (
+            <section
+              key={node.id}
+              className='overflow-hidden rounded-md border border-gray-100 bg-white p-4 text-sm dark:border-zinc-800 dark:bg-zinc-800 md:p-5'
+            >
+              <Markdown markdown={node.body} />
+            </section>
+          );
+        })}
+      </article>
+    </section>
   );
 };

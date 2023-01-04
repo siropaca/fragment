@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import Link from 'next/link';
 
 import { ContentsLayout } from '@/components/Layout';
-import { URL } from '@/lib/router';
+import { PagePath } from '@/lib/router';
 
 const Custom404Page: NextPage = () => {
   return (
@@ -10,7 +10,7 @@ const Custom404Page: NextPage = () => {
       title='404 not found'
       description='404 not found'
       pageType='article'
-      pageUrl={URL.notfound(true)}
+      pageUrl={PagePath.notfound(true)}
     >
       <div className='min-h-full bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8'>
         <div className='mx-auto max-w-max'>
@@ -29,7 +29,7 @@ const Custom404Page: NextPage = () => {
 
           <div className='mt-14 text-center'>
             <Link
-              href={URL.root()}
+              href={PagePath.root()}
               className='text-base font-medium text-indigo-600 hover:text-indigo-500'
             >
               Go back home

@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 
 import { ContentsLayout } from '@/components/Layout';
 import { BlogCards } from '@/features/blog/components';
-import { URL } from '@/lib/router';
+import { PagePath } from '@/lib/router';
 
 const IndexPage: NextPage = () => {
   return (
@@ -10,7 +10,7 @@ const IndexPage: NextPage = () => {
       // TODO: descriptionを設定する
       description=''
       pageType='blog'
-      pageUrl={URL.root(true)}
+      pageUrl={PagePath.root(true)}
     >
       <section className='grid gap-5 md:grid-cols-2 lg:grid-cols-3'>
         <BlogCards />

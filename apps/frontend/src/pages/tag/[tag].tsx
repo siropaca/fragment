@@ -3,7 +3,7 @@ import { GetServerSideProps, NextPage } from 'next';
 import { ContentsLayout } from '@/components/Layout';
 import { TagCards } from '@/features/tag/components';
 import { Tag } from '@/gql/graphql';
-import { URL } from '@/lib/router';
+import { PagePath } from '@/lib/router';
 
 interface Props {
   tag: Tag;
@@ -17,7 +17,7 @@ const TagResultPage: NextPage<Props> = (props) => {
       title={props.tag}
       description={title}
       pageType='article'
-      pageUrl={URL.tagResult(props.tag, true)}
+      pageUrl={PagePath.tagResult(props.tag, true)}
     >
       <h2 className='mb-6'>{title}</h2>
 

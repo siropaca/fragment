@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 
 import { ContentsLayout } from '@/components/Layout';
-import { URL } from '@/lib/router';
+import { PagePath } from '@/lib/router';
 
 const AboutPage: NextPage = () => {
   return (
@@ -9,7 +9,7 @@ const AboutPage: NextPage = () => {
       // TODO: descriptionを設定する
       description=''
       pageType='article'
-      pageUrl={URL.about(true)}
+      pageUrl={PagePath.about(true)}
     >
       Aboutページ
     </ContentsLayout>

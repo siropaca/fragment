@@ -4,13 +4,13 @@ import { faGithub, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-i
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 
-import { URL } from '@/lib/router';
+import { PagePath } from '@/lib/router';
 
 const NAVIGATIONS = {
   main: [
-    { name: 'Blog', href: URL.blog() },
-    { name: 'Tools', href: URL.tools() },
-    { name: 'About', href: URL.about() },
+    { name: 'Blog', href: PagePath.blog() },
+    { name: 'Tools', href: PagePath.tools() },
+    { name: 'About', href: PagePath.about() },
     { name: 'Contact', href: `mailto:${process.env.NEXT_PUBLIC_EMAIL}`, target: '_blank' },
   ],
   social: [

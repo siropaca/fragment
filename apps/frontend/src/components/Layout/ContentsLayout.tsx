@@ -1,8 +1,7 @@
-import { Footer } from '@/components/Footer';
-import { HeadProps, Head } from '@/components/Head';
-import { Header } from '@/components/Header';
+import { Footer, Header } from '@/components/Navigation';
+import { HeadProps, Head } from '@/components/Utils';
 
-const CONTENTS_MAX_WIDTH = '1192px';
+export const CONTENTS_MAX_WIDTH = '1192px';
 
 interface Props extends HeadProps {
   hero?: React.ReactNode;

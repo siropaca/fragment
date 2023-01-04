@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import Link from 'next/link';
 
-import { URL } from '@/lib/router';
+import { PagePath } from '@/lib/router';
 import { formatDate, utcToJstTime } from '@/utils/date';
 import { countText, hasJa } from '@/utils/text';
 
@@ -23,7 +23,7 @@ export const ArticleCard = (props: Props): JSX.Element => {
   return (
     <article className='flex flex-col overflow-hidden rounded-lg shadow-lg transition-shadow hover:shadow-xl'>
       <Link
-        href={URL.articleDetail(props.id)}
+        href={PagePath.articleDetail(props.id)}
         className='h-full'
       >
         <div className='relative flex h-40 shrink-0 items-center justify-center overflow-hidden'>
