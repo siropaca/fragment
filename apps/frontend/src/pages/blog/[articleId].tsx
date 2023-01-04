@@ -81,7 +81,7 @@ const ArticlesDetailPage: NextPage<Props> = (props) => {
               className='m-auto'
               style={{ maxWidth: CONTENTS_MAX_WIDTH }}
             >
-              <h1 className='mb-1.5 text-xl font-semibold leading-relaxed md:text-2xl lg:text-3xl'>
+              <h1 className='mb-1.5 text-xl font-semibold leading-relaxed md:mb-2 md:text-2xl lg:mb-2.5 lg:text-3xl'>
                 {data.article.title}
               </h1>
 

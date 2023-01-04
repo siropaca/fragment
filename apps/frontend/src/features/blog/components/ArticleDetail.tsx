@@ -1,4 +1,6 @@
 import { useQuery } from '@apollo/client';
+import ReactMarkdown from 'react-markdown';
+import SyntaxHighlighter from 'react-syntax-highlighter';
 
 import { graphql } from '@/gql';
 
@@ -37,11 +39,48 @@ export const ArticleDetail = (props: Props): JSX.Element => {
   }
 
   return (
-    <div>
-      <h2>{data.article?.description}</h2>
-      {data.article?.articleNodes.map((node) => {
-        return <div key={node.id}>{node.body}</div>;
-      })}
-    </div>
+    <section>
+      {data.article?.description && (
+        <p className='mb-6 text-gray-500 dark:text-gray-400'>{data.article?.description}</p>
+      )}
+
+      <article className='flex flex-col gap-4'>
+        {data.article?.articleNodes.map((node) => {
+          return (
+            <div
+              key={node.id}
+              className='overflow-hidden rounded-md bg-white p-4 dark:bg-zinc-800'
+              id='react-markdown'
+            >
+              <ReactMarkdown
+                children={node.body.replace(/\n$/g, '  \n')}
+                components={{
+                  // eslint-disable-next-line no-unused-vars
+                  code({ node, inline, className, children, ...props }) {
+                    const matchLang = /language-(\w+)/.exec(className || '');
+                    return !inline && matchLang ? (
+                      // @ts-ignore
+                      <SyntaxHighlighter
+                        children={String(children).replace(/\n$/, '')}
+                        language={matchLang[1]}
+                        PreTag='div'
+                        {...props}
+                      />
+                    ) : (
+                      <code
+                        className={className}
+                        {...props}
+                      >
+                        {children}
+                      </code>
+                    );
+                  },
+                }}
+              />
+            </div>
+          );
+        })}
+      </article>
+    </section>
   );
 };
