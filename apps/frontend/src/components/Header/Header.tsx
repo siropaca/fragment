@@ -4,7 +4,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 
-import { About, Blog, Contact, Logo, Tools } from '@/components/assets';
+import { About, Blog, Contact, Logo, Tools } from '@/components/Assets';
 import { PagePath } from '@/lib/router';
 
 const MENUS = [

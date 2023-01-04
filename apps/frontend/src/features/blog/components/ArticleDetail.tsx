@@ -55,7 +55,6 @@ export const ArticleDetail = (props: Props): JSX.Element => {
               <ReactMarkdown
                 children={node.body.replace(/\n$/g, '  \n')}
                 components={{
-                  // eslint-disable-next-line no-unused-vars
                   code({ node, inline, className, children, ...props }) {
                     const matchLang = /language-(\w+)/.exec(className || '');
                     return !inline && matchLang ? (
