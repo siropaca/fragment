@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { CONTENTS_MAX_WIDTH, ContentsLayout } from '@/components/Layout';
 import { ArticleDetail } from '@/features/blog/components';
 import { graphql } from '@/gql';
-import { URL } from '@/lib/router';
+import { PagePath } from '@/lib/router';
 import { formatDate, utcToJstTime } from '@/utils/date';
 
 interface Props {
@@ -56,7 +56,7 @@ const ArticlesDetailPage: NextPage<Props> = (props) => {
       title={data.article.title}
       description={data.article.description}
       pageType='article'
-      pageUrl={URL.articleDetail(data.article.id, true)}
+      pageUrl={PagePath.articleDetail(data.article.id, true)}
       hero={
         <div className='relative h-0 overflow-hidden pt-[50%] md:pt-[35%] lg:pt-[30%]'>
           {/* Hero画像 */}
@@ -95,7 +95,7 @@ const ArticlesDetailPage: NextPage<Props> = (props) => {
                 {data.article?.tags.map((tag) => (
                   <Link
                     key={tag}
-                    href={URL.tagResult(tag)}
+                    href={PagePath.tagResult(tag)}
                     className='cursor-pointer hover:opacity-50'
                   >
                     # {tag}

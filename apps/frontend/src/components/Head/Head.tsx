@@ -1,6 +1,6 @@
 import { default as NextHead } from 'next/head';
 
-import { URL } from '@/lib/router';
+import { PagePath } from '@/lib/router';
 
 export interface HeadProps {
   title?: string;
@@ -66,7 +66,7 @@ export const Head = (props: HeadProps): JSX.Element => {
       <meta
         property='og:image'
         // TODO: ページによって動的に変えれるようにする
-        content={URL.withOrigin('/ogp.png')}
+        content={PagePath.withOrigin('/ogp.png')}
       />
 
       {/* TODO: 完成したら削除する */}

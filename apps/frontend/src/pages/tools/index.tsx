@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 
 import { ContentsLayout } from '@/components/Layout';
-import { URL } from '@/lib/router';
+import { PagePath } from '@/lib/router';
 
 const ToolsIndexPage: NextPage = () => {
   return (
@@ -9,7 +9,7 @@ const ToolsIndexPage: NextPage = () => {
       // TODO: descriptionを設定する
       description=''
       pageType='article'
-      pageUrl={URL.tools(true)}
+      pageUrl={PagePath.tools(true)}
     >
       Toolsページ
     </ContentsLayout>

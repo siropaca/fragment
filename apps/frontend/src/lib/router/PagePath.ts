@@ -1,10 +1,10 @@
-export const URL = {
+export const PagePath = {
   /**
    * ルートページ
    */
   root(withOrigin?: boolean) {
     const path = '/';
-    return withOrigin ? URL.withOrigin(path) : path;
+    return withOrigin ? PagePath.withOrigin(path) : path;
   },
 
   /**
@@ -12,12 +12,12 @@ export const URL = {
    */
   blog(withOrigin?: boolean) {
     const path = `/blog`;
-    return withOrigin ? URL.withOrigin(path) : path;
+    return withOrigin ? PagePath.withOrigin(path) : path;
   },
 
   articleDetail(articleId: string, withOrigin?: boolean) {
     const path = `/blog/${articleId}`;
-    return withOrigin ? URL.withOrigin(path) : path;
+    return withOrigin ? PagePath.withOrigin(path) : path;
   },
 
   /**
@@ -25,7 +25,7 @@ export const URL = {
    */
   tagResult(tag: string, withOrigin?: boolean) {
     const path = `/tag/${tag}`;
-    return withOrigin ? URL.withOrigin(path) : path;
+    return withOrigin ? PagePath.withOrigin(path) : path;
   },
 
   /**
@@ -33,7 +33,7 @@ export const URL = {
    */
   tools(withOrigin?: boolean) {
     const path = '/tools';
-    return withOrigin ? URL.withOrigin(path) : path;
+    return withOrigin ? PagePath.withOrigin(path) : path;
   },
 
   /**
@@ -41,7 +41,7 @@ export const URL = {
    */
   about(withOrigin?: boolean) {
     const path = '/about';
-    return withOrigin ? URL.withOrigin(path) : path;
+    return withOrigin ? PagePath.withOrigin(path) : path;
   },
 
   /**
@@ -49,7 +49,7 @@ export const URL = {
    */
   notfound(withOrigin?: boolean) {
     const path = '/404';
-    return withOrigin ? URL.withOrigin(path) : path;
+    return withOrigin ? PagePath.withOrigin(path) : path;
   },
 
   withOrigin(path: string): string {
