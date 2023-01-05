@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const Markdown = ({ markdown }: Props): JSX.Element => {
-  const markdownText = markdown.replace(/\n$/g, '  \n');
+  const markdownText = markdown.replace(/\n/g, '  \n');
 
   return (
     <div className='react-markdown'>
@@ -21,7 +21,7 @@ export const Markdown = ({ markdown }: Props): JSX.Element => {
             return (
               <div className='rounded-md bg-zinc-700/50 px-5 py-3'>
                 {fileName && (
-                  <div className='mb-4 mt-1'>
+                  <div className='mb-4'>
                     <span className='inline-block underline underline-offset-8 opacity-50'>
                       {fileName}
                     </span>

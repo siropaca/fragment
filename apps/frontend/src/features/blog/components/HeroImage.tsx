@@ -1,3 +1,5 @@
+import { faCalendar } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 
 import { CONTENTS_MAX_WIDTH } from '@/components/Layout';
@@ -42,8 +44,9 @@ export const HeroImage = ({ imageName, title, publishedAt, tags }: Props): JSX.E
             {title}
           </h1>
 
-          <div className='mb-3 flex gap-4 text-sm md:text-base'>
-            <time className='tracking-widest'>最終更新 {localPublishedAt}</time>
+          <div className='mb-3 flex items-center gap-2 text-sm md:text-base'>
+            <FontAwesomeIcon icon={faCalendar} />
+            <time className='tracking-widest'>{localPublishedAt}</time>
           </div>
 
           <div className='flex flex-wrap gap-4 text-sm'>

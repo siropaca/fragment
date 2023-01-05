@@ -50,7 +50,7 @@ const ArticlesDetailPage: NextPage<Props> = (props) => {
       description={data.article.description}
       pageType='article'
       pageUrl={PagePath.articleDetail(data.article.id, true)}
-      hero={
+      heroImage={
         <HeroImage
           imageName={data.article.hero}
           title={data.article.title}
