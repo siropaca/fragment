@@ -11,13 +11,13 @@ interface Props {
 }
 
 const queryDocument = graphql(`
-  query Article($where: ArticleWhereUniqueInput!) {
+  query Blog($where: ArticleWhereUniqueInput!) {
     article(where: $where) {
       id
       title
       description
       tags
-      hero
+      heroImage
       publishedAt
       articleNodes {
         id
@@ -27,7 +27,7 @@ const queryDocument = graphql(`
   }
 `);
 
-const ArticlesDetailPage: NextPage<Props> = (props) => {
+const BlogPage: NextPage<Props> = (props) => {
   const { loading, error, data } = useQuery(queryDocument, {
     variables: {
       where: {
@@ -52,7 +52,7 @@ const ArticlesDetailPage: NextPage<Props> = (props) => {
       pageUrl={PagePath.articleDetail(data.article.id, true)}
       heroImage={
         <HeroImage
-          imageName={data.article.hero}
+          imageName={data.article.heroImage}
           title={data.article.title}
           publishedAt={data.article.publishedAt}
           tags={data.article?.tags}
@@ -64,7 +64,7 @@ const ArticlesDetailPage: NextPage<Props> = (props) => {
   );
 };
 
-export default ArticlesDetailPage;
+export default BlogPage;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
