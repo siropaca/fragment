@@ -11,7 +11,7 @@ const MENUS = [
   {
     a: {
       name: 'Blog',
-      href: PagePath.blog(),
+      href: PagePath.blogIndex(),
     },
     text: () => {
       return (

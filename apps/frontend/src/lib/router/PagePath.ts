@@ -8,9 +8,9 @@ export const PagePath = {
   },
 
   /**
-   * 記事ページ
+   * ブログページ
    */
-  blog(withOrigin?: boolean) {
+  blogIndex(withOrigin?: boolean) {
     const path = `/blog`;
     return withOrigin ? PagePath.withOrigin(path) : path;
   },

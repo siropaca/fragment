@@ -11,11 +11,11 @@ describe('PagePath', () => {
   });
 
   /**
-   * blog()
+   * blogIndex()
    */
-  describe('blog()', () => {
+  describe('blogIndex()', () => {
     it('正しいパスが返るか', () => {
-      expect(PagePath.blog()).toEqual('/blog');
+      expect(PagePath.blogIndex()).toEqual('/blog');
     });
   });
 

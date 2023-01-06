@@ -10,12 +10,12 @@ interface Props {
 }
 
 const query = graphql(`
-  query BlogBody($where: PostWhereUniqueInput!) {
+  query BlogBody($where: PostWhereUniqueInput!, $first: Int) {
     post(where: $where) {
       id
       description
       showDescription
-      postNodes {
+      postNodes(first: $first) {
         id
         publishedAt
         body
@@ -30,6 +30,7 @@ export const BlogBody = (props: Props): JSX.Element => {
       where: {
         id: props.postId,
       },
+      first: 100,
     },
   });
 

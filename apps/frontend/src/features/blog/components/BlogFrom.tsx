@@ -1,6 +1,9 @@
 import { useMutation } from '@apollo/client';
+import clsx from 'clsx';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { Markdown } from '@/components/DataDisplay/Markdown';
 import { graphql } from '@/gql';
 
 interface Props {
@@ -36,6 +39,7 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors, isDirty },
   } = useForm<BlogFromField>();
 
@@ -82,16 +86,47 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
 
   const loading = createLoading || publishLoading;
 
+  const [isEditor, setIsEditor] = useState(true);
+  const [isPreview, setIsPreview] = useState(false);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <textarea
-        className='h-64 w-full bg-transparent px-4 py-2'
-        {...register('text')}
-      />
+      <div className='mb-4 flex gap-x-5'>
+        <button
+          type='button'
+          className={clsx(isEditor && 'text-blue-500')}
+          onClick={() => setIsEditor(!isEditor)}
+        >
+          エディタ
+        </button>
+
+        <button
+          type='button'
+          className={clsx(isPreview && 'text-blue-500')}
+          onClick={() => setIsPreview(!isPreview)}
+        >
+          プレビュー
+        </button>
+      </div>
+
+      <div className='flex gap-x-5'>
+        <textarea
+          className={clsx(
+            'h-64 w-full flex-1 shrink-0 bg-transparent px-4 py-2',
+            !isEditor && 'hidden',
+          )}
+          {...register('text')}
+        />
+
+        <Markdown
+          markdown={watch().text ?? ''}
+          className={clsx('flex-1 shrink-0', !isPreview && 'hidden')}
+        />
+      </div>
 
       {errors.text?.message && <div>{JSON.stringify(errors.text.message)}</div>}
 
-      <div className='px-4 pt-2 text-right'>
+      <div className='px-4 pt-3 text-right'>
         <button disabled={!isDirty || loading}>{loading ? '登録中...' : '保存'}</button>
       </div>
     </form>

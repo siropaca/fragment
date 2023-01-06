@@ -1,16 +1,18 @@
+import clsx from 'clsx';
 import ReactMarkdown from 'react-markdown';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 interface Props {
   markdown: string;
+  className?: string;
 }
 
-export const Markdown = ({ markdown }: Props): JSX.Element => {
+export const Markdown = ({ markdown, className }: Props): JSX.Element => {
   const markdownText = markdown.replace(/\n/g, '  \n');
 
   return (
-    <div className='react-markdown'>
+    <div className={clsx('react-markdown', className)}>
       <ReactMarkdown
         children={markdownText}
         components={{

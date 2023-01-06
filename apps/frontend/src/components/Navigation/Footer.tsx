@@ -8,7 +8,7 @@ import { PagePath } from '@/lib/router';
 
 const NAVIGATIONS = {
   main: [
-    { name: 'Blog', href: PagePath.blog() },
+    { name: 'Blog', href: PagePath.blogIndex() },
     { name: 'Tools', href: PagePath.tools() },
     { name: 'About', href: PagePath.about() },
     { name: 'Contact', href: `mailto:${process.env.NEXT_PUBLIC_EMAIL}`, target: '_blank' },
