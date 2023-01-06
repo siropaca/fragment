@@ -6,16 +6,16 @@ import { graphql } from '@/gql';
 import { formatDate } from '@/utils/date';
 
 interface Props {
-  articleId: string;
+  postId: string;
 }
 
 const query = graphql(`
-  query BlogBody($where: ArticleWhereUniqueInput!) {
-    article(where: $where) {
+  query BlogBody($where: PostWhereUniqueInput!) {
+    post(where: $where) {
       id
       description
       showDescription
-      articleNodes {
+      postNodes {
         id
         publishedAt
         body
@@ -28,7 +28,7 @@ export const BlogBody = (props: Props): JSX.Element => {
   const { loading, error, data, refetch } = useQuery(query, {
     variables: {
       where: {
-        id: props.articleId,
+        id: props.postId,
       },
     },
   });
@@ -37,7 +37,7 @@ export const BlogBody = (props: Props): JSX.Element => {
 
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
 
-  if (!data || !data.article) {
+  if (!data || !data.post) {
     return <p>Sorry not found.</p>;
   }
 
@@ -47,14 +47,14 @@ export const BlogBody = (props: Props): JSX.Element => {
 
   return (
     <section>
-      {data.article?.description && data.article?.showDescription && (
+      {data.post?.description && data.post?.showDescription && (
         <p className='mb-6 leading-loose text-gray-500 dark:text-gray-400'>
-          {data.article?.description}
+          {data.post?.description}
         </p>
       )}
 
       <article className='flex flex-col gap-6'>
-        {data.article?.articleNodes.map((node) => {
+        {data.post?.postNodes.map((node) => {
           return (
             <BlogSection key={node.id}>
               <div className='mb-2 tracking-widest'>{formatDate(new Date(node.publishedAt))}</div>
@@ -66,7 +66,7 @@ export const BlogBody = (props: Props): JSX.Element => {
 
         <BlogSection>
           <BlogFrom
-            articleId={props.articleId}
+            postId={props.postId}
             onCompleted={handleCompleted}
           />
         </BlogSection>

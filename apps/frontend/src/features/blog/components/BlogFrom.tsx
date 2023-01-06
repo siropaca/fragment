@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { graphql } from '@/gql';
 
 interface Props {
-  articleId: string;
+  postId: string;
   onCompleted: Function;
 }
 
@@ -12,25 +12,25 @@ interface BlogFromField {
   text: string;
 }
 
-const createArticleNodeQuery = graphql(`
-  mutation BlogFrom_createArticleNodeMutation($data: ArticleNodeCreateInput!) {
-    createArticleNode(data: $data) {
+const createPostNodeQuery = graphql(`
+  mutation BlogFrom_createPostNodeMutation($data: PostNodeCreateInput!) {
+    createPostNode(data: $data) {
       id
     }
   }
 `);
 
-const publishArticleNodeQuery = graphql(`
-  mutation BlogFrom_publishArticleNodeMutation($where: ArticleNodeWhereUniqueInput!) {
-    publishArticleNode(where: $where) {
+const publishPostNodeQuery = graphql(`
+  mutation BlogFrom_publishPostNodeMutation($where: PostNodeWhereUniqueInput!) {
+    publishPostNode(where: $where) {
       id
     }
   }
 `);
 
-export const BlogFrom = ({ articleId, onCompleted }: Props): JSX.Element => {
-  const [commitCreateMutation, { loading: createLoading }] = useMutation(createArticleNodeQuery);
-  const [commitPublishMutation, { loading: publishLoading }] = useMutation(publishArticleNodeQuery);
+export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
+  const [commitCreateMutation, { loading: createLoading }] = useMutation(createPostNodeQuery);
+  const [commitPublishMutation, { loading: publishLoading }] = useMutation(publishPostNodeQuery);
 
   const {
     register,
@@ -39,11 +39,11 @@ export const BlogFrom = ({ articleId, onCompleted }: Props): JSX.Element => {
     formState: { errors, isDirty },
   } = useForm<BlogFromField>();
 
-  const publishArticleNodeId = (articleNodeId: string) => {
+  const publishPostNodeId = (postNodeId: string) => {
     commitPublishMutation({
       variables: {
         where: {
-          id: articleNodeId,
+          id: postNodeId,
         },
       },
       onCompleted: () => {
@@ -64,15 +64,15 @@ export const BlogFrom = ({ articleId, onCompleted }: Props): JSX.Element => {
       variables: {
         data: {
           body: formData.text,
-          article: {
+          post: {
             connect: {
-              id: articleId,
+              id: postId,
             },
           },
         },
       },
       onCompleted: (data) => {
-        publishArticleNodeId(data.createArticleNode?.id!);
+        publishPostNodeId(data.createPostNode?.id!);
       },
       onError: (error) => {
         console.error(error);

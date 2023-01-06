@@ -15,8 +15,8 @@ export const PagePath = {
     return withOrigin ? PagePath.withOrigin(path) : path;
   },
 
-  articleDetail(articleId: string, withOrigin?: boolean) {
-    const path = `/blog/${articleId}`;
+  blogDetail(postId: string, withOrigin?: boolean) {
+    const path = `/blog/${postId}`;
     return withOrigin ? PagePath.withOrigin(path) : path;
   },
 

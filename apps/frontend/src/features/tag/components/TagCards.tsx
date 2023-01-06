@@ -1,23 +1,24 @@
 import { useQuery } from '@apollo/client';
 
-import { ArticleCard } from '@/components/Surfaces';
+import { PostCard } from '@/components/Surfaces';
 import { graphql } from '@/gql';
-import { ArticleOrderByInput, Tag } from '@/gql/graphql';
+import { PostOrderByInput, Tag } from '@/gql/graphql';
 
 interface Props {
   tag: Tag;
 }
 
 const query = graphql(`
-  query TagArticles($orderBy: ArticleOrderByInput, $where: ArticleWhereInput) {
-    articles(orderBy: $orderBy, where: $where) {
+  query TagPosts($orderBy: PostOrderByInput, $where: PostWhereInput) {
+    posts(orderBy: $orderBy, where: $where) {
       id
       title
       description
       publishedAt
+      postType
       heroImage
       heroText
-      articleNodes {
+      postNodes {
         id
       }
     }
@@ -27,7 +28,7 @@ const query = graphql(`
 export const TagCards = (props: Props): JSX.Element => {
   const { loading, error, data } = useQuery(query, {
     variables: {
-      orderBy: ArticleOrderByInput.IdDesc,
+      orderBy: PostOrderByInput.IdDesc,
       where: {
         tags_contains_all: [props.tag],
       },
@@ -40,10 +41,10 @@ export const TagCards = (props: Props): JSX.Element => {
 
   return (
     <>
-      {data!.articles.map((article) => (
-        <ArticleCard
-          key={article.id}
-          {...article}
+      {data!.posts.map((post) => (
+        <PostCard
+          key={post.id}
+          {...post}
         />
       ))}
     </>

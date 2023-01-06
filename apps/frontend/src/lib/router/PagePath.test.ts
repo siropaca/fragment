@@ -20,13 +20,13 @@ describe('PagePath', () => {
   });
 
   /**
-   * articleDetail()
+   * blogDetail()
    */
-  describe('articleDetail()', () => {
+  describe('blogDetail()', () => {
     const ARTICLE_ID = 'clcby90x4jik30bzv6mekyrcc';
 
     it('正しいパスが返るか', () => {
-      expect(PagePath.articleDetail(ARTICLE_ID)).toEqual('/blog/clcby90x4jik30bzv6mekyrcc');
+      expect(PagePath.blogDetail(ARTICLE_ID)).toEqual('/blog/clcby90x4jik30bzv6mekyrcc');
     });
   });
 

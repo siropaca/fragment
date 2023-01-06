@@ -12,21 +12,27 @@ interface Props {
   title: string;
   description?: string | undefined | null;
   publishedAt?: string;
+  postType: string;
   heroImage: string;
   heroText?: string | undefined | null;
-  articleNodes: {
+  postNodes: {
     id: string;
   }[];
 }
 
-export const ArticleCard = (props: Props): JSX.Element => {
+export const PostCard = (props: Props): JSX.Element => {
   return (
     <article className='flex flex-col overflow-hidden rounded-lg shadow-lg transition-shadow hover:shadow-xl'>
       <Link
-        href={PagePath.articleDetail(props.id)}
+        href={PagePath.blogDetail(props.id)}
         className='h-full'
       >
+        {/* ヒーロー画像 */}
         <div className='relative flex h-40 shrink-0 items-center justify-center overflow-hidden'>
+          <span className='absolute top-2.5 left-2.5 z-10 rounded-lg bg-gray-900/40 px-2.5 py-1 text-xs text-white'>
+            {props.postType}
+          </span>
+
           <img
             className='absolute inset-0 m-auto object-cover'
             src={`/heros/${props.heroImage}.png`}
@@ -44,6 +50,7 @@ export const ArticleCard = (props: Props): JSX.Element => {
           </span>
         </div>
 
+        {/* 記事情報 */}
         <div className='h-full bg-white p-4 dark:bg-zinc-800'>
           <div className='text-lg font-semibold line-clamp-2'>{props.title}</div>
 
@@ -65,7 +72,7 @@ export const ArticleCard = (props: Props): JSX.Element => {
                 size='sm'
                 style={{ top: '1px' }}
               />
-              {props.articleNodes.length}
+              {props.postNodes.length}
             </span>
           </div>
         </div>

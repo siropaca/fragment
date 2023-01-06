@@ -7,19 +7,19 @@ import { graphql } from '@/gql';
 import { PagePath } from '@/lib/router';
 
 interface Props {
-  articleId: string;
+  postId: string;
 }
 
 const query = graphql(`
-  query BlogPage($where: ArticleWhereUniqueInput!) {
-    article(where: $where) {
+  query BlogPage($where: PostWhereUniqueInput!) {
+    post(where: $where) {
       id
       title
       description
       tags
       heroImage
       publishedAt
-      articleNodes {
+      postNodes {
         id
         body
       }
@@ -31,7 +31,7 @@ const BlogPage: NextPage<Props> = (props) => {
   const { loading, error, data } = useQuery(query, {
     variables: {
       where: {
-        id: props.articleId,
+        id: props.postId,
       },
     },
   });
@@ -40,26 +40,26 @@ const BlogPage: NextPage<Props> = (props) => {
 
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
 
-  if (!data || !data.article) {
+  if (!data || !data.post) {
     return <p>Empty data</p>;
   }
 
   return (
     <ContentsLayout
-      title={data.article.title}
-      description={data.article.description}
+      title={data.post.title}
+      description={data.post.description}
       pageType='article'
-      pageUrl={PagePath.articleDetail(data.article.id, true)}
+      pageUrl={PagePath.blogDetail(data.post.id, true)}
       heroImage={
         <HeroImage
-          imageName={data.article.heroImage}
-          title={data.article.title}
-          publishedAt={data.article.publishedAt}
-          tags={data.article?.tags}
+          imageName={data.post.heroImage}
+          title={data.post.title}
+          publishedAt={data.post.publishedAt}
+          tags={data.post?.tags}
         />
       }
     >
-      <BlogBody articleId={props.articleId} />
+      <BlogBody postId={props.postId} />
     </ContentsLayout>
   );
 };
