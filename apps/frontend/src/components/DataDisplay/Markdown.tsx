@@ -19,7 +19,7 @@ export const Markdown = ({ markdown }: Props): JSX.Element => {
             const fileName = (className || '').replace(/language-(\w+):?/, '');
 
             return (
-              <div className='rounded-md bg-zinc-700/50 px-5 py-3'>
+              <div className='rounded-md bg-zinc-700 px-5 py-3'>
                 {fileName && (
                   <div className='mb-4'>
                     <span className='inline-block underline underline-offset-8 opacity-50'>

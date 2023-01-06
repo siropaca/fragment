@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import { GetServerSideProps, NextPage } from 'next';
 
 import { ContentsLayout } from '@/components/Layout';
-import { ArticleDetail, HeroImage } from '@/features/blog/components';
+import { BlogBody, HeroImage } from '@/features/blog/components';
 import { graphql } from '@/gql';
 import { PagePath } from '@/lib/router';
 
@@ -10,8 +10,8 @@ interface Props {
   articleId: string;
 }
 
-const queryDocument = graphql(`
-  query Blog($where: ArticleWhereUniqueInput!) {
+const query = graphql(`
+  query BlogPage($where: ArticleWhereUniqueInput!) {
     article(where: $where) {
       id
       title
@@ -28,7 +28,7 @@ const queryDocument = graphql(`
 `);
 
 const BlogPage: NextPage<Props> = (props) => {
-  const { loading, error, data } = useQuery(queryDocument, {
+  const { loading, error, data } = useQuery(query, {
     variables: {
       where: {
         id: props.articleId,
@@ -59,7 +59,7 @@ const BlogPage: NextPage<Props> = (props) => {
         />
       }
     >
-      <ArticleDetail articleId={props.articleId} />
+      <BlogBody articleId={props.articleId} />
     </ContentsLayout>
   );
 };

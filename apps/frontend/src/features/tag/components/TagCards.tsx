@@ -8,7 +8,7 @@ interface Props {
   tag: Tag;
 }
 
-const queryDocument = graphql(`
+const query = graphql(`
   query TagArticles($orderBy: ArticleOrderByInput, $where: ArticleWhereInput) {
     articles(orderBy: $orderBy, where: $where) {
       id
@@ -25,7 +25,7 @@ const queryDocument = graphql(`
 `);
 
 export const TagCards = (props: Props): JSX.Element => {
-  const { loading, error, data } = useQuery(queryDocument, {
+  const { loading, error, data } = useQuery(query, {
     variables: {
       orderBy: ArticleOrderByInput.IdDesc,
       where: {
