@@ -1,5 +1,6 @@
 import { faCalendar } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import clsx from 'clsx';
 import Link from 'next/link';
 
 import { CONTENTS_MAX_WIDTH } from '@/components/Layout';
@@ -31,25 +32,27 @@ export const HeroImage = ({ imageName, title, publishedAt, tags }: Props): JSX.E
         style={{ backdropFilter: 'blur(3px)' }}
       />
 
-      {/* タイトル */}
       <div
         className='absolute inset-x-0 bottom-0 pb-4 pt-16 text-white md:pb-5 lg:pb-6'
-        style={{ background: 'linear-gradient(180deg, transparent 0, rgba(0,0,0,.60))' }}
+        style={{ background: 'linear-gradient(180deg, transparent 0, rgba(0, 0, 0, 0.2))' }}
       >
         <div
           className='m-auto px-4 md:px-8'
           style={{ maxWidth: CONTENTS_MAX_WIDTH }}
         >
+          {/* タイトル */}
           <h1 className='mb-2 text-xl font-semibold leading-relaxed md:mb-2 md:text-2xl lg:mb-2.5 lg:text-3xl'>
             {title}
           </h1>
 
-          <div className='mb-3 flex items-center gap-2 text-sm md:text-base'>
+          {/* 更新日 */}
+          <div className='flex items-center gap-2 text-sm md:text-base'>
             <FontAwesomeIcon icon={faCalendar} />
             <time className='tracking-widest'>{localPublishedAt}</time>
           </div>
 
-          <div className='flex flex-wrap gap-4 text-sm'>
+          {/* タグ */}
+          <div className={clsx('flex flex-wrap gap-4 text-sm', tags.length && 'mt-3')}>
             {tags.map((tag) => (
               <Link
                 key={tag}

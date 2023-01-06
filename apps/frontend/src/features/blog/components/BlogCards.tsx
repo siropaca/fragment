@@ -4,14 +4,14 @@ import { ArticleCard } from '@/components/Surfaces';
 import { graphql } from '@/gql';
 import { ArticleOrderByInput } from '@/gql/graphql';
 
-const queryDocument = graphql(`
+const query = graphql(`
   query Articles($orderBy: ArticleOrderByInput) {
     articles(orderBy: $orderBy) {
       id
       title
       description
       publishedAt
-      hero
+      heroImage
       heroText
       articleNodes {
         id
@@ -21,7 +21,7 @@ const queryDocument = graphql(`
 `);
 
 export const BlogCards = (): JSX.Element => {
-  const { loading, error, data } = useQuery(queryDocument, {
+  const { loading, error, data } = useQuery(query, {
     variables: {
       orderBy: ArticleOrderByInput.IdDesc,
     },

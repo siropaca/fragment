@@ -12,7 +12,7 @@ interface Props {
   title: string;
   description?: string | undefined | null;
   publishedAt?: string;
-  hero: string;
+  heroImage: string;
   heroText?: string | undefined | null;
   articleNodes: {
     id: string;
@@ -29,7 +29,7 @@ export const ArticleCard = (props: Props): JSX.Element => {
         <div className='relative flex h-40 shrink-0 items-center justify-center overflow-hidden'>
           <img
             className='absolute inset-0 m-auto object-cover'
-            src={`/heros/${props.hero}.png`}
+            src={`/heros/${props.heroImage}.png`}
             alt='#'
           />
 
