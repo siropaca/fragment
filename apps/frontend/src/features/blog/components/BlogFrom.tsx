@@ -95,7 +95,10 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
         <button
           type='button'
           className={clsx(isEditor && 'text-blue-500')}
-          onClick={() => setIsEditor(!isEditor)}
+          onClick={() => {
+            setIsEditor(true);
+            setIsPreview(false);
+          }}
         >
           エディタ
         </button>
@@ -103,7 +106,10 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
         <button
           type='button'
           className={clsx(isPreview && 'text-blue-500')}
-          onClick={() => setIsPreview(!isPreview)}
+          onClick={() => {
+            setIsPreview(true);
+            setIsEditor(false);
+          }}
         >
           プレビュー
         </button>
