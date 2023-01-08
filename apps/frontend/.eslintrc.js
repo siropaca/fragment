@@ -15,7 +15,18 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/no-floating-promises': 'warn',
     '@typescript-eslint/no-misused-promises': 'warn',
+    // disable the rule for all files
+    '@typescript-eslint/explicit-function-return-type': 'off',
   },
+  overrides: [
+    {
+      // enable the rule specifically for TypeScript files
+      files: ['src/lib/**/*.ts', 'src/utils/**/*.ts'],
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': 'error',
+      },
+    },
+  ],
   globals: {
     React: true,
     JSX: true,
