@@ -66,7 +66,6 @@ export const NewBlogForm = (): JSX.Element => {
           title: formData.title.replace(/\n/g, ' '),
           description: formData.description,
           showDescription: !!formData.description,
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           heroImage: formData.heroImage as HeroImage,
           heroText: formData.heroText,
           tags: [],

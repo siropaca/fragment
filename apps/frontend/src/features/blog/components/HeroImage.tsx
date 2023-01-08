@@ -8,13 +8,20 @@ import { PagePath } from '@/lib/router';
 import { formatDate, utcToJstTime } from '@/utils/date';
 
 interface Props {
-  imageName: string;
+  heroImage: string;
+  heroText: string | null | undefined;
   title: string;
   publishedAt: string;
   tags: string[];
 }
 
-export const HeroImage = ({ imageName, title, publishedAt, tags }: Props): JSX.Element => {
+export const HeroImage = ({
+  heroImage,
+  heroText,
+  title,
+  publishedAt,
+  tags,
+}: Props): JSX.Element => {
   const localPublishedAt = formatDate(utcToJstTime(new Date(publishedAt)));
 
   return (
@@ -22,7 +29,7 @@ export const HeroImage = ({ imageName, title, publishedAt, tags }: Props): JSX.E
       {/* 画像 */}
       <img
         className='absolute inset-0 m-auto w-full object-cover'
-        src={`/heros/${imageName}.png`}
+        src={`/heros/${heroImage}.png`}
         alt='#'
       />
 
@@ -40,6 +47,9 @@ export const HeroImage = ({ imageName, title, publishedAt, tags }: Props): JSX.E
           className='m-auto px-4 md:px-8'
           style={{ maxWidth: CONTENTS_MAX_WIDTH }}
         >
+          {/* ヒーローテキスト */}
+          {heroText && <div className='mb-1'>{heroText}</div>}
+
           {/* タイトル */}
           <h1 className='mb-2 text-xl font-semibold leading-relaxed md:mb-2 md:text-2xl lg:mb-2.5 lg:text-3xl'>
             {title}
