@@ -11,7 +11,6 @@ const query = graphql(`
       title
       description
       publishedAt
-      postType
       heroImage
       heroText
       postNodes {
