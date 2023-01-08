@@ -54,7 +54,7 @@ const BlogPage: NextPage<Props> = (props) => {
         <HeroImage
           imageName={data.post.heroImage}
           title={data.post.title}
-          publishedAt={data.post.publishedAt}
+          publishedAt={data.post.publishedAt as string}
           tags={data.post?.tags}
         />
       }

@@ -75,7 +75,7 @@ export const PagePath = {
     const searchParams = new URLSearchParams();
 
     Object.keys(params).forEach((key) => {
-      const value = String((params as any)[key]);
+      const value = String(params[key]);
 
       if (value !== '') {
         searchParams.set(key, value);

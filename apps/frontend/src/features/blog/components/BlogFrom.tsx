@@ -8,7 +8,7 @@ import { graphql } from '@/gql';
 
 interface Props {
   postId: string;
-  onCompleted: Function;
+  onCompleted(): void;
 }
 
 interface BlogFromField {
@@ -43,8 +43,8 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
     formState: { errors, isDirty },
   } = useForm<BlogFromField>();
 
-  const publishPostNodeId = (postNodeId: string) => {
-    commitPublishMutation({
+  const publishPostNodeId = async (postNodeId: string | undefined) => {
+    await commitPublishMutation({
       variables: {
         where: {
           id: postNodeId,
@@ -76,7 +76,7 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
         },
       },
       onCompleted: (data) => {
-        publishPostNodeId(data.createPostNode?.id!);
+        publishPostNodeId(data.createPostNode?.id);
       },
       onError: (error) => {
         console.error(error);

@@ -13,7 +13,7 @@ export {
   startOfDay,
 } from 'date-fns';
 
-export const format = (date: Date, format: string = 'yyyy/M/d HH:mm'): string => {
+export const format = (date: Date, format = 'yyyy/M/d HH:mm'): string => {
   return _format(date, format, { locale: ja });
 };
 

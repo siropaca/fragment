@@ -1,6 +1,12 @@
 module.exports = {
-  plugins: ['import', 'unused-imports', 'tailwindcss'],
-  extends: ['next', 'turbo', 'eslint:recommended', 'prettier', 'plugin:tailwindcss/recommended'],
+  plugins: ['@typescript-eslint', 'import', 'unused-imports', 'tailwindcss'],
+  extends: [
+    'next/core-web-vitals',
+    'turbo',
+    'eslint:recommended',
+    'prettier',
+    'plugin:tailwindcss/recommended',
+  ],
   ignorePatterns: ['*.d.ts', '*.config.js', '**/gql/*.ts'],
   rules: {
     'no-console': [

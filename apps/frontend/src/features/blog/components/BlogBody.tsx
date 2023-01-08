@@ -58,7 +58,9 @@ export const BlogBody = (props: Props): JSX.Element => {
         {data.post?.postNodes.map((node) => {
           return (
             <BlogSection key={node.id}>
-              <div className='mb-2 tracking-widest'>{formatDate(new Date(node.publishedAt))}</div>
+              <div className='mb-2 tracking-widest'>
+                {formatDate(new Date(node.publishedAt as string))}
+              </div>
 
               <Markdown markdown={node.body} />
             </BlogSection>
