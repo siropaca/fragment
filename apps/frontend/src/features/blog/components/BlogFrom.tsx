@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Markdown } from '@/components/DataDisplay/Markdown';
+import { Textarea } from '@/components/Inputs';
 import { graphql } from '@/gql';
 
 interface Props {
@@ -115,12 +116,9 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
         </button>
       </div>
 
-      <div className='flex gap-x-5'>
-        <textarea
-          className={clsx(
-            'h-64 w-full flex-1 shrink-0 bg-transparent px-4 py-2',
-            !isEditor && 'hidden',
-          )}
+      <div>
+        <Textarea
+          className={clsx('h-64 w-full flex-1 shrink-0', !isEditor && 'hidden')}
           {...register('text')}
         />
 
