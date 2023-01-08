@@ -20,8 +20,9 @@ export const PagePath = {
     return withOrigin ? PagePath.withOrigin(path) : path;
   },
 
-  blogNew(): string {
-    return '/blog/new';
+  blogNew(withOrigin?: boolean): string {
+    const path = '/blog/new';
+    return withOrigin ? PagePath.withOrigin(path) : path;
   },
 
   /**

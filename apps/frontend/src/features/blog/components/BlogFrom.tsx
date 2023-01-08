@@ -44,8 +44,8 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
     formState: { errors, isDirty },
   } = useForm<BlogFromField>();
 
-  const publishPostNodeId = async (postNodeId: string | undefined) => {
-    await commitPublishMutation({
+  const publishPostNode = (postNodeId: string | undefined) => {
+    commitPublishMutation({
       variables: {
         where: {
           id: postNodeId,
@@ -77,7 +77,7 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
         },
       },
       onCompleted: (data) => {
-        publishPostNodeId(data.createPostNode?.id);
+        publishPostNode(data.createPostNode?.id);
       },
       onError: (error) => {
         console.error(error);
@@ -118,7 +118,8 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
 
       <div>
         <Textarea
-          className={clsx('h-64 w-full flex-1 shrink-0', !isEditor && 'hidden')}
+          placeholder='テキストを追加...'
+          className={clsx('h-64', !isEditor && 'hidden')}
           {...register('text')}
         />
 

@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 
 import { ContentsLayout } from '@/components/Layout';
+import { NewBlogForm } from '@/features/blog/components';
 import { PagePath } from '@/lib/router';
 
 const NewPage: NextPage = () => {
@@ -9,9 +10,9 @@ const NewPage: NextPage = () => {
       // TODO: descriptionを設定する
       description=''
       pageType='article'
-      pageUrl={PagePath.about(true)}
+      pageUrl={PagePath.blogNew(true)}
     >
-      投稿ページ
+      <NewBlogForm />
     </ContentsLayout>
   );
 };
