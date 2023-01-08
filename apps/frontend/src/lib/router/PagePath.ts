@@ -20,6 +20,10 @@ export const PagePath = {
     return withOrigin ? PagePath.withOrigin(path) : path;
   },
 
+  blogNew() {
+    return '/blog/new';
+  },
+
   /**
    * タグ検索結果ページ
    */

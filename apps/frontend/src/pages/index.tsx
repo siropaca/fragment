@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import Link from 'next/link';
 
 import { ContentsLayout } from '@/components/Layout';
 import { BlogCards } from '@/features/blog/components';
@@ -12,7 +13,9 @@ const IndexPage: NextPage = () => {
       pageType='blog'
       pageUrl={PagePath.root(true)}
     >
-      <div></div>
+      <div className='mb-5 text-right'>
+        <Link href={PagePath.blogNew()}>New Post</Link>
+      </div>
 
       <section className='grid gap-5 md:grid-cols-2 lg:grid-cols-3'>
         <BlogCards />

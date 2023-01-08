@@ -31,6 +31,15 @@ describe('PagePath', () => {
   });
 
   /**
+   * blogNew()
+   */
+  describe('blogNew()', () => {
+    it('正しいパスが返るか', () => {
+      expect(PagePath.blogNew()).toEqual('/blog/new');
+    });
+  });
+
+  /**
    * tagResult()
    */
   describe('tagResult()', () => {
