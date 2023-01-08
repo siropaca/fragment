@@ -57,6 +57,14 @@ export const PagePath = {
     return withOrigin ? PagePath.withOrigin(path) : path;
   },
 
+  /**
+   * Herosページ
+   */
+  heros(withOrigin?: boolean): string {
+    const path = '/heros';
+    return withOrigin ? PagePath.withOrigin(path) : path;
+  },
+
   withOrigin(path: string): string {
     return process.env.NEXT_PUBLIC_SITE_ORIGIN + path;
   },

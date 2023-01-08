@@ -1,4 +1,5 @@
 import { useMutation } from '@apollo/client';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 
@@ -99,7 +100,7 @@ export const NewBlogForm = (): JSX.Element => {
 
         <select
           {...register('heroImage')}
-          className='bg-transparent'
+          className='cursor-pointer bg-transparent focus:outline-none'
         >
           {/* eslint-disable-next-line @typescript-eslint/no-unsafe-argument */}
           {Object.entries(HeroImage).map(([key, value]) => {
@@ -113,6 +114,16 @@ export const NewBlogForm = (): JSX.Element => {
             );
           })}
         </select>
+
+        <div className='mt-5'>
+          <Link
+            href={PagePath.heros()}
+            target='_blank'
+            rel='noreferrer'
+          >
+            Sampleはこちら→
+          </Link>
+        </div>
 
         <div className='mt-5'>
           <input

@@ -74,4 +74,13 @@ describe('PagePath', () => {
       expect(PagePath.notfound()).toEqual('/404');
     });
   });
+
+  /**
+   * heros()
+   */
+  describe('heros()', () => {
+    it('正しいパスが返るか', () => {
+      expect(PagePath.heros()).toEqual('/heros');
+    });
+  });
 });
