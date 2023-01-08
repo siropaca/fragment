@@ -26,6 +26,9 @@ const publishPostQuery = graphql(`
 
 interface NewPostField {
   title: string;
+  description: string;
+  heroImage: string;
+  heroText: string;
 }
 
 export const NewBlogForm = (): JSX.Element => {
@@ -57,17 +60,15 @@ export const NewBlogForm = (): JSX.Element => {
   };
 
   const onSubmit = (formData: NewPostField) => {
-    const title = formData.title.replace(/\n/g, ' ');
-
     commitCreateMutation({
       variables: {
         data: {
-          title,
-          description: '',
+          title: formData.title.replace(/\n/g, ' '),
+          description: formData.description,
+          showDescription: !!formData.description,
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-          heroImage: HeroImage.RoyalHeath,
-          heroText: '',
-          showDescription: true,
+          heroImage: formData.heroImage as HeroImage,
+          heroText: formData.heroText,
           tags: [],
         },
       },
@@ -90,6 +91,38 @@ export const NewBlogForm = (): JSX.Element => {
           className='h-32'
           {...register('title')}
         />
+
+        <Textarea
+          placeholder='説明を追加...'
+          className='h-32'
+          {...register('description')}
+        />
+
+        <select
+          {...register('heroImage')}
+          className='bg-transparent'
+        >
+          {/* eslint-disable-next-line @typescript-eslint/no-unsafe-argument */}
+          {Object.entries(HeroImage).map(([key, value]) => {
+            return (
+              <option
+                key={key}
+                value={value}
+              >
+                {value}
+              </option>
+            );
+          })}
+        </select>
+
+        <div className='mt-5'>
+          <input
+            type='text'
+            placeholder='heroText'
+            className='w-full bg-transparent'
+            {...register('heroText')}
+          />
+        </div>
 
         {errors.title?.message && <div>{JSON.stringify(errors.title.message)}</div>}
 
