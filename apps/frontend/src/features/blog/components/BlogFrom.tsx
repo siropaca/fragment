@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Markdown } from '@/components/DataDisplay/Markdown';
-import { Textarea } from '@/components/Inputs';
+import { Button, Textarea } from '@/components/Inputs';
 import { graphql } from '@/gql';
 
 interface Props {
@@ -92,28 +92,28 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className='mb-4 flex gap-x-5'>
-        <button
-          type='button'
-          className={clsx(isEditor && 'text-blue-500')}
+      <div className='mb-4 flex gap-x-2'>
+        <Button
+          variant={isEditor ? 'contained' : 'text'}
+          size='small'
           onClick={() => {
             setIsEditor(true);
             setIsPreview(false);
           }}
         >
           エディタ
-        </button>
+        </Button>
 
-        <button
-          type='button'
-          className={clsx(isPreview && 'text-blue-500')}
+        <Button
+          variant={isPreview ? 'contained' : 'text'}
+          size='small'
           onClick={() => {
             setIsPreview(true);
             setIsEditor(false);
           }}
         >
           プレビュー
-        </button>
+        </Button>
       </div>
 
       <div>
@@ -131,8 +131,15 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
 
       {errors.text?.message && <div>{JSON.stringify(errors.text.message)}</div>}
 
-      <div className='px-4 pt-3 text-right'>
-        <button disabled={!isDirty || loading}>{loading ? '登録中...' : '保存'}</button>
+      <div className='mt-3 text-right'>
+        <Button
+          variant='contained'
+          size='small'
+          type='submit'
+          disabled={!isDirty || loading}
+        >
+          {loading ? '登録中...' : '保存'}
+        </Button>
       </div>
     </form>
   );

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 
-import { Input, Select, Textarea } from '@/components/Inputs';
+import { Button, Input, Select, Textarea } from '@/components/Inputs';
 import { BlogSection } from '@/features/blog/components';
 import { graphql } from '@/gql';
 import { HeroImage } from '@/gql/graphql';
@@ -165,7 +165,14 @@ export const NewBlogForm = (): JSX.Element => {
         {errors.title?.message && <div>{JSON.stringify(errors.title.message)}</div>}
 
         <div className='mt-4 text-right'>
-          <button disabled={!isDirty || loading}>{loading ? '作成中...' : '作成'}</button>
+          <Button
+            variant='contained'
+            size='small'
+            type='submit'
+            disabled={!isDirty || loading}
+          >
+            {loading ? '作成中...' : '作成'}
+          </Button>
         </div>
       </BlogSection>
     </form>
