@@ -3,12 +3,13 @@ import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Button, Input, Select, Textarea } from '@/components/Inputs';
-import { BlogSection } from '@/features/blog/components';
+import { BlogSection, TagSelector } from '@/features/blog/components';
 import { graphql } from '@/gql';
-import { HeroImage } from '@/gql/graphql';
+import { HeroImage, Tag } from '@/gql/graphql';
 import { PagePath } from '@/lib/router';
 
 const createPostQuery = graphql(`
@@ -45,6 +46,8 @@ export const NewBlogForm = (): JSX.Element => {
     handleSubmit,
     formState: { errors, isDirty },
   } = useForm<NewPostField>();
+
+  const [tags, setTags] = useState<string[]>([]);
 
   const loading = createPostLoading || publishPostLoading;
 
@@ -87,7 +90,7 @@ export const NewBlogForm = (): JSX.Element => {
           showDescription: !!formData.description,
           heroImage: (heroImage || formData.heroImage) as HeroImage,
           heroText: formData.heroText,
-          tags: [],
+          tags: tags as Tag[],
         },
       },
       onCompleted: (data) => {
@@ -97,6 +100,10 @@ export const NewBlogForm = (): JSX.Element => {
         console.error(error);
       },
     });
+  };
+
+  const handleTagsChange = (tags: string[]) => {
+    setTags(tags);
   };
 
   return (
@@ -125,14 +132,18 @@ export const NewBlogForm = (): JSX.Element => {
         {/* Tags */}
         <div className='mt-4'>
           <div className='mb-2'>Tags</div>
-          aa
+
+          <TagSelector
+            value={tags}
+            onChange={handleTagsChange}
+          />
         </div>
 
         {/* Hero Image */}
         <div className='mt-4'>
           <div className='mb-2'>Hero Image</div>
 
-          <div className='flex items-end gap-x-4'>
+          <div className='flex items-center gap-x-4'>
             <Input
               type='text'
               placeholder='Text'
@@ -141,7 +152,7 @@ export const NewBlogForm = (): JSX.Element => {
 
             <Select
               {...register('heroImage')}
-              options={[{ label: 'Random', value: 'random' }, ...heroImageOptions]}
+              options={[{ label: 'Random Image', value: 'random' }, ...heroImageOptions]}
             />
 
             <div className='opacity-50 hover:opacity-80'>

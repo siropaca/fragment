@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import { Markdown } from '@/components/DataDisplay/Markdown';
 import { BlogFrom, BlogSection } from '@/features/blog/components';
 import { graphql } from '@/gql';
-import { formatDate } from '@/utils/date';
+import { formatDateJa } from '@/utils/date';
 
 interface Props {
   postId: string;
@@ -59,7 +59,7 @@ export const BlogBody = (props: Props): JSX.Element => {
           return (
             <BlogSection key={node.id}>
               <div className='mb-2 tracking-widest'>
-                {formatDate(new Date(node.publishedAt as string))}
+                {formatDateJa(new Date(node.publishedAt as string))}
               </div>
 
               <Markdown markdown={node.body} />

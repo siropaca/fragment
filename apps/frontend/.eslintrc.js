@@ -19,12 +19,11 @@ module.exports = {
     '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/no-unsafe-member-access': 'off',
     '@typescript-eslint/no-unsafe-argument': 'off',
-    // disable the rule for all files
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
   },
   overrides: [
     {
-      // enable the rule specifically for TypeScript files
       files: ['src/lib/**/*.ts', 'src/utils/**/*.ts'],
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'error',
