@@ -1,5 +1,6 @@
 import { format as _format } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
+import enUS from 'date-fns/locale/en-US';
 import ja from 'date-fns/locale/ja';
 
 export {
@@ -13,11 +14,17 @@ export {
   startOfDay,
 } from 'date-fns';
 
-export const format = (date: Date, format = 'yyyy/M/d HH:mm'): string => {
-  return _format(date, format, { locale: ja });
+type Locale = 'ja' | 'en';
+
+export const format = (date: Date, format = 'yyyy/M/d HH:mm', locale: Locale = 'ja'): string => {
+  return _format(date, format, { locale: locale === 'ja' ? ja : enUS });
 };
 
-export const formatDate = (date: Date): string => {
+export const formatDateEn = (date: Date): string => {
+  return format(date, 'E LLL d yyyy', 'en');
+};
+
+export const formatDateJa = (date: Date): string => {
   return format(date, 'yyyy/M/d');
 };
 

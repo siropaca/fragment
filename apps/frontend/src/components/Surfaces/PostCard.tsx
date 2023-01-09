@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 
 import { PagePath } from '@/lib/router';
-import { formatDate, utcToJstTime } from '@/utils/date';
+import { formatDateEn, utcToJstTime } from '@/utils/date';
 import { countText, hasJa } from '@/utils/text';
 
 interface Props {
@@ -56,8 +56,8 @@ export const PostCard = (props: Props): JSX.Element => {
           )}
 
           <div className='mt-3 text-sm text-gray-400 dark:text-gray-500'>
-            <time className='tracking-widest'>
-              {formatDate(utcToJstTime(new Date(props.publishedAt!)))}
+            <time className='tracking-wider'>
+              {formatDateEn(utcToJstTime(new Date(props.publishedAt!)))}
             </time>
 
             <span>

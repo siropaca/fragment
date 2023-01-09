@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import { CONTENTS_MAX_WIDTH } from '@/components/Layout';
 import { PagePath } from '@/lib/router';
-import { formatDate, utcToJstTime } from '@/utils/date';
+import { formatDateEn, utcToJstTime } from '@/utils/date';
 
 interface Props {
   heroImage: string;
@@ -22,7 +22,7 @@ export const HeroImage = ({
   publishedAt,
   tags,
 }: Props): JSX.Element => {
-  const localPublishedAt = formatDate(utcToJstTime(new Date(publishedAt)));
+  const localPublishedAt = formatDateEn(utcToJstTime(new Date(publishedAt)));
 
   return (
     <div className='relative h-52 overflow-hidden md:h-72 lg:h-80'>
@@ -58,7 +58,7 @@ export const HeroImage = ({
           {/* Update Date */}
           <div className='flex items-center gap-2 text-sm md:text-base'>
             <FontAwesomeIcon icon={faCalendar} />
-            <time className='tracking-widest'>{localPublishedAt}</time>
+            <time className='tracking-wider'>{localPublishedAt}</time>
           </div>
 
           {/* Tags */}
