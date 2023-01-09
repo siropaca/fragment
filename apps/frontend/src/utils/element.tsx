@@ -1,11 +1,11 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 /**
  * childrenから対象の要素を取得する
  */
 export const findElement = <P,>(
-  childElements: Array<Exclude<ReactNode, boolean | null | undefined>>,
-  targetElement: (props: undefined) => JSX.Element,
+  childElements: Array<Exclude<React.ReactNode, boolean | null | undefined>>,
+  targetElement: ({ as, ...props }: any) => JSX.Element,
 ): (JSX.Element & { props: P }) | undefined => {
   if (!childElements) return undefined;
 
@@ -18,8 +18,8 @@ export const findElement = <P,>(
  * childrenから対象の要素を抽出する
  */
 export const filterElement = <P,>(
-  childElements: Array<Exclude<ReactNode, boolean | null | undefined>>,
-  targetElement: (props: undefined) => JSX.Element,
+  childElements: Array<Exclude<React.ReactNode, boolean | null | undefined>>,
+  targetElement: ({ as, ...props }: any) => JSX.Element,
 ): (JSX.Element & { props: P })[] | undefined => {
   if (!childElements) return undefined;
 

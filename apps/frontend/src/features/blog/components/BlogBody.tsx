@@ -1,6 +1,8 @@
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { faEllipsis, faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import clsx from 'clsx';
+import { useState } from 'react';
 
 import { DropdownMenu } from '@/components/DataDisplay/DropdownMenu';
 import { Markdown } from '@/components/DataDisplay/Markdown';
@@ -12,7 +14,7 @@ interface Props {
   postId: string;
 }
 
-const query = graphql(`
+const getBlogBodyQuery = graphql(`
   query BlogBody($where: PostWhereUniqueInput!, $first: Int) {
     post(where: $where) {
       id
@@ -27,8 +29,18 @@ const query = graphql(`
   }
 `);
 
+const deletePostNodeQuery = graphql(`
+  mutation DeletePostNode($where: PostNodeWhereUniqueInput!) {
+    deletePostNode(where: $where) {
+      id
+    }
+  }
+`);
+
 export const BlogBody = (props: Props): JSX.Element => {
-  const { loading, error, data, refetch } = useQuery(query, {
+  const [editingNode, setEditingNode] = useState<string | null>(null);
+
+  const { loading, error, data, refetch } = useQuery(getBlogBodyQuery, {
     variables: {
       where: {
         id: props.postId,
@@ -36,6 +48,8 @@ export const BlogBody = (props: Props): JSX.Element => {
       first: 100,
     },
   });
+
+  const [commitDeleteMutation] = useMutation(deletePostNodeQuery);
 
   if (loading) return <p>Loading...</p>;
 
@@ -46,7 +60,34 @@ export const BlogBody = (props: Props): JSX.Element => {
   }
 
   const handleCompleted = () => {
+    setEditingNode(null);
     refetch();
+  };
+
+  const handleEditClick = (nodeId: string) => {
+    setEditingNode(nodeId);
+  };
+
+  const handleDeleteClick = (nodeId: string) => {
+    commitDeleteMutation({
+      variables: {
+        where: {
+          id: nodeId,
+        },
+      },
+      onCompleted: () => {
+        refetch();
+
+        // TODO: フィードバック追加
+      },
+      onError: (error) => {
+        console.error(error);
+      },
+    });
+  };
+
+  const handleCanClick = () => {
+    setEditingNode(null);
   };
 
   return (
@@ -61,7 +102,8 @@ export const BlogBody = (props: Props): JSX.Element => {
         {data.post?.postNodes.map((node) => {
           return (
             <BlogSection key={node.id}>
-              <div className='-mt-2 mb-2 flex justify-between'>
+              {/* Header */}
+              <div className='-mt-2 mb-4 flex justify-between'>
                 <time className='tracking-widest'>
                   {formatDateJa(new Date(node.publishedAt as string))}
                 </time>
@@ -74,7 +116,10 @@ export const BlogBody = (props: Props): JSX.Element => {
                     />
                   </DropdownMenu.Button>
 
-                  <DropdownMenu.MenuItem>
+                  <DropdownMenu.MenuItem
+                    onClick={() => handleEditClick(node.id)}
+                    disabled={editingNode === node.id}
+                  >
                     <FontAwesomeIcon
                       icon={faPen}
                       size='sm'
@@ -83,7 +128,10 @@ export const BlogBody = (props: Props): JSX.Element => {
                     編集
                   </DropdownMenu.MenuItem>
 
-                  <DropdownMenu.MenuItem>
+                  <DropdownMenu.MenuItem
+                    className='text-red-600'
+                    onClick={() => handleDeleteClick(node.id)}
+                  >
                     <FontAwesomeIcon
                       icon={faTrashCan}
                       size='sm'
@@ -94,7 +142,21 @@ export const BlogBody = (props: Props): JSX.Element => {
                 </DropdownMenu>
               </div>
 
-              <Markdown markdown={node.body} />
+              {/* Body */}
+              <Markdown
+                markdown={node.body}
+                className={clsx(editingNode === node.id && 'hidden')}
+              />
+
+              {editingNode === node.id && (
+                <BlogFrom
+                  postId={props.postId}
+                  postNodeId={node.id}
+                  defaultValue={node.body}
+                  onCompleted={handleCompleted}
+                  onCancelClick={handleCanClick}
+                />
+              )}
             </BlogSection>
           );
         })}

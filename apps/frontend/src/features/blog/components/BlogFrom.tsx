@@ -9,7 +9,11 @@ import { graphql } from '@/gql';
 
 interface Props {
   postId: string;
-  onCompleted(): void;
+  postNodeId?: string;
+  defaultValue?: string;
+  className?: string;
+  onCompleted: () => void;
+  onCancelClick?: () => void;
 }
 
 interface BlogFromField {
@@ -24,6 +28,17 @@ const createPostNodeQuery = graphql(`
   }
 `);
 
+const updatePostNodeQuery = graphql(`
+  mutation BlogFrom_UpdatePostNodeMutation(
+    $where: PostNodeWhereUniqueInput!
+    $data: PostNodeUpdateInput!
+  ) {
+    updatePostNode(where: $where, data: $data) {
+      id
+    }
+  }
+`);
+
 const publishPostNodeQuery = graphql(`
   mutation BlogFrom_publishPostNodeMutation($where: PostNodeWhereUniqueInput!) {
     publishPostNode(where: $where) {
@@ -32,8 +47,16 @@ const publishPostNodeQuery = graphql(`
   }
 `);
 
-export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
+export const BlogFrom = ({
+  postId,
+  postNodeId,
+  defaultValue = '',
+  className,
+  onCompleted,
+  onCancelClick,
+}: Props): JSX.Element => {
   const [commitCreateMutation, { loading: createLoading }] = useMutation(createPostNodeQuery);
+  const [commitUpdateMutation, { loading: updateLoading }] = useMutation(updatePostNodeQuery);
   const [commitPublishMutation, { loading: publishLoading }] = useMutation(publishPostNodeQuery);
 
   const {
@@ -42,7 +65,16 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
     setValue,
     watch,
     formState: { errors, isDirty },
-  } = useForm<BlogFromField>();
+  } = useForm<BlogFromField>({
+    defaultValues: {
+      text: defaultValue,
+    },
+  });
+
+  const loading = createLoading || updateLoading || publishLoading;
+
+  const [isEditor, setIsEditor] = useState(true);
+  const [isPreview, setIsPreview] = useState(false);
 
   const publishPostNode = (postNodeId: string | undefined) => {
     commitPublishMutation({
@@ -65,33 +97,53 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
   };
 
   const onSubmit = (formData: BlogFromField) => {
-    commitCreateMutation({
-      variables: {
-        data: {
-          body: formData.text,
-          post: {
-            connect: {
-              id: postId,
+    // Update
+    if (postNodeId) {
+      commitUpdateMutation({
+        variables: {
+          where: {
+            id: postNodeId,
+          },
+          data: {
+            body: formData.text,
+          },
+        },
+        onCompleted: (data) => {
+          publishPostNode(data.updatePostNode?.id);
+        },
+        onError: (error) => {
+          console.error(error);
+        },
+      });
+    }
+    // Create
+    else {
+      commitCreateMutation({
+        variables: {
+          data: {
+            body: formData.text,
+            post: {
+              connect: {
+                id: postId,
+              },
             },
           },
         },
-      },
-      onCompleted: (data) => {
-        publishPostNode(data.createPostNode?.id);
-      },
-      onError: (error) => {
-        console.error(error);
-      },
-    });
+        onCompleted: (data) => {
+          publishPostNode(data.createPostNode?.id);
+        },
+        onError: (error) => {
+          console.error(error);
+        },
+      });
+    }
   };
 
-  const loading = createLoading || publishLoading;
-
-  const [isEditor, setIsEditor] = useState(true);
-  const [isPreview, setIsPreview] = useState(false);
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={className}
+    >
       <div className='mb-4 flex gap-x-2'>
         <Button
           variant={isEditor ? 'contained' : 'text'}
@@ -131,7 +183,20 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
 
       {errors.text?.message && <div>{JSON.stringify(errors.text.message)}</div>}
 
-      <div className='mt-3 text-right'>
+      <div className='mt-5 text-right'>
+        {postNodeId && (
+          <Button
+            variant='outlined'
+            size='small'
+            type='button'
+            disabled={loading}
+            onClick={onCancelClick}
+            className='mr-4'
+          >
+            キャンセル
+          </Button>
+        )}
+
         <Button
           variant='contained'
           size='small'
