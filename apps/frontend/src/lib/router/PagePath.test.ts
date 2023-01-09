@@ -31,6 +31,15 @@ describe('PagePath', () => {
   });
 
   /**
+   * blogNew()
+   */
+  describe('blogNew()', () => {
+    it('正しいパスが返るか', () => {
+      expect(PagePath.blogNew()).toEqual('/blog/new');
+    });
+  });
+
+  /**
    * tagResult()
    */
   describe('tagResult()', () => {
@@ -63,6 +72,15 @@ describe('PagePath', () => {
   describe('notfound()', () => {
     it('正しいパスが返るか', () => {
       expect(PagePath.notfound()).toEqual('/404');
+    });
+  });
+
+  /**
+   * heroes()
+   */
+  describe('heroes()', () => {
+    it('正しいパスが返るか', () => {
+      expect(PagePath.heroes()).toEqual('/heroes');
     });
   });
 });

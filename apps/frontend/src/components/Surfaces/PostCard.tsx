@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 
 import { PagePath } from '@/lib/router';
-import { formatDate, utcToJstTime } from '@/utils/date';
+import { formatDateEn, utcToJstTime } from '@/utils/date';
 import { countText, hasJa } from '@/utils/text';
 
 interface Props {
@@ -12,7 +12,6 @@ interface Props {
   title: string;
   description?: string | undefined | null;
   publishedAt?: string;
-  postType: string;
   heroImage: string;
   heroText?: string | undefined | null;
   postNodes: {
@@ -29,13 +28,9 @@ export const PostCard = (props: Props): JSX.Element => {
       >
         {/* ヒーロー画像 */}
         <div className='relative flex h-40 shrink-0 items-center justify-center overflow-hidden'>
-          <span className='absolute top-2.5 left-2.5 z-10 rounded-lg bg-gray-900/40 px-2.5 py-1 text-xs text-white'>
-            {props.postType}
-          </span>
-
           <img
             className='absolute inset-0 m-auto object-cover'
-            src={`/heros/${props.heroImage}.png`}
+            src={`/heroes/${props.heroImage}.png`}
             alt='#'
           />
 
@@ -61,8 +56,8 @@ export const PostCard = (props: Props): JSX.Element => {
           )}
 
           <div className='mt-3 text-sm text-gray-400 dark:text-gray-500'>
-            <time className='tracking-widest'>
-              {formatDate(utcToJstTime(new Date(props.publishedAt!)))}
+            <time className='tracking-wider'>
+              {formatDateEn(utcToJstTime(new Date(props.publishedAt!)))}
             </time>
 
             <span>

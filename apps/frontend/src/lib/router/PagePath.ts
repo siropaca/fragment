@@ -2,7 +2,7 @@ export const PagePath = {
   /**
    * ルートページ
    */
-  root(withOrigin?: boolean) {
+  root(withOrigin?: boolean): string {
     const path = '/';
     return withOrigin ? PagePath.withOrigin(path) : path;
   },
@@ -10,20 +10,25 @@ export const PagePath = {
   /**
    * ブログページ
    */
-  blogIndex(withOrigin?: boolean) {
-    const path = `/blog`;
+  blogIndex(withOrigin?: boolean): string {
+    const path = '/blog';
     return withOrigin ? PagePath.withOrigin(path) : path;
   },
 
-  blogDetail(postId: string, withOrigin?: boolean) {
+  blogDetail(postId: string, withOrigin?: boolean): string {
     const path = `/blog/${postId}`;
+    return withOrigin ? PagePath.withOrigin(path) : path;
+  },
+
+  blogNew(withOrigin?: boolean): string {
+    const path = '/blog/new';
     return withOrigin ? PagePath.withOrigin(path) : path;
   },
 
   /**
    * タグ検索結果ページ
    */
-  tagResult(tag: string, withOrigin?: boolean) {
+  tagResult(tag: string, withOrigin?: boolean): string {
     const path = `/tag/${tag}`;
     return withOrigin ? PagePath.withOrigin(path) : path;
   },
@@ -31,7 +36,7 @@ export const PagePath = {
   /**
    * Toolsページ
    */
-  tools(withOrigin?: boolean) {
+  tools(withOrigin?: boolean): string {
     const path = '/tools';
     return withOrigin ? PagePath.withOrigin(path) : path;
   },
@@ -39,7 +44,7 @@ export const PagePath = {
   /**
    * Aboutページ
    */
-  about(withOrigin?: boolean) {
+  about(withOrigin?: boolean): string {
     const path = '/about';
     return withOrigin ? PagePath.withOrigin(path) : path;
   },
@@ -47,8 +52,16 @@ export const PagePath = {
   /**
    * 404ページ
    */
-  notfound(withOrigin?: boolean) {
+  notfound(withOrigin?: boolean): string {
     const path = '/404';
+    return withOrigin ? PagePath.withOrigin(path) : path;
+  },
+
+  /**
+   * Heroesページ
+   */
+  heroes(withOrigin?: boolean): string {
+    const path = '/heroes';
     return withOrigin ? PagePath.withOrigin(path) : path;
   },
 
@@ -71,7 +84,7 @@ export const PagePath = {
     const searchParams = new URLSearchParams();
 
     Object.keys(params).forEach((key) => {
-      const value = String((params as any)[key]);
+      const value = String(params[key]);
 
       if (value !== '') {
         searchParams.set(key, value);

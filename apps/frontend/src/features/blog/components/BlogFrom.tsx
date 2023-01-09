@@ -4,11 +4,12 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Markdown } from '@/components/DataDisplay/Markdown';
+import { Button, Textarea } from '@/components/Inputs';
 import { graphql } from '@/gql';
 
 interface Props {
   postId: string;
-  onCompleted: Function;
+  onCompleted(): void;
 }
 
 interface BlogFromField {
@@ -43,7 +44,7 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
     formState: { errors, isDirty },
   } = useForm<BlogFromField>();
 
-  const publishPostNodeId = (postNodeId: string) => {
+  const publishPostNode = (postNodeId: string | undefined) => {
     commitPublishMutation({
       variables: {
         where: {
@@ -76,7 +77,7 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
         },
       },
       onCompleted: (data) => {
-        publishPostNodeId(data.createPostNode?.id!);
+        publishPostNode(data.createPostNode?.id);
       },
       onError: (error) => {
         console.error(error);
@@ -91,36 +92,35 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className='mb-4 flex gap-x-5'>
-        <button
-          type='button'
-          className={clsx(isEditor && 'text-blue-500')}
+      <div className='mb-4 flex gap-x-2'>
+        <Button
+          variant={isEditor ? 'contained' : 'text'}
+          size='small'
           onClick={() => {
             setIsEditor(true);
             setIsPreview(false);
           }}
         >
           エディタ
-        </button>
+        </Button>
 
-        <button
-          type='button'
-          className={clsx(isPreview && 'text-blue-500')}
+        <Button
+          variant={isPreview ? 'contained' : 'text'}
+          size='small'
+          disabled={!watch().text}
           onClick={() => {
             setIsPreview(true);
             setIsEditor(false);
           }}
         >
           プレビュー
-        </button>
+        </Button>
       </div>
 
-      <div className='flex gap-x-5'>
-        <textarea
-          className={clsx(
-            'h-64 w-full flex-1 shrink-0 bg-transparent px-4 py-2',
-            !isEditor && 'hidden',
-          )}
+      <div>
+        <Textarea
+          placeholder='テキストを追加...'
+          className={clsx('h-64', !isEditor && 'hidden')}
           {...register('text')}
         />
 
@@ -132,8 +132,16 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
 
       {errors.text?.message && <div>{JSON.stringify(errors.text.message)}</div>}
 
-      <div className='px-4 pt-3 text-right'>
-        <button disabled={!isDirty || loading}>{loading ? '登録中...' : '保存'}</button>
+      <div className='mt-3 text-right'>
+        <Button
+          variant='contained'
+          size='small'
+          type='submit'
+          disabled={!isDirty || loading}
+          loading={loading}
+        >
+          保存
+        </Button>
       </div>
     </form>
   );

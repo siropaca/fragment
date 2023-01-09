@@ -18,6 +18,7 @@ const query = graphql(`
       description
       tags
       heroImage
+      heroText
       publishedAt
       postNodes {
         id
@@ -52,9 +53,10 @@ const BlogPage: NextPage<Props> = (props) => {
       pageUrl={PagePath.blogDetail(data.post.id, true)}
       heroImage={
         <HeroImage
-          imageName={data.post.heroImage}
+          heroImage={data.post.heroImage}
+          heroText={data.post.heroText}
           title={data.post.title}
-          publishedAt={data.post.publishedAt}
+          publishedAt={data.post.publishedAt as string}
           tags={data.post?.tags}
         />
       }

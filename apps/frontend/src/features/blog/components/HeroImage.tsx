@@ -5,28 +5,35 @@ import Link from 'next/link';
 
 import { CONTENTS_MAX_WIDTH } from '@/components/Layout';
 import { PagePath } from '@/lib/router';
-import { formatDate, utcToJstTime } from '@/utils/date';
+import { formatDateEn, utcToJstTime } from '@/utils/date';
 
 interface Props {
-  imageName: string;
+  heroImage: string;
+  heroText: string | null | undefined;
   title: string;
   publishedAt: string;
   tags: string[];
 }
 
-export const HeroImage = ({ imageName, title, publishedAt, tags }: Props): JSX.Element => {
-  const localPublishedAt = formatDate(utcToJstTime(new Date(publishedAt)));
+export const HeroImage = ({
+  heroImage,
+  heroText,
+  title,
+  publishedAt,
+  tags,
+}: Props): JSX.Element => {
+  const localPublishedAt = formatDateEn(utcToJstTime(new Date(publishedAt)));
 
   return (
     <div className='relative h-52 overflow-hidden md:h-72 lg:h-80'>
-      {/* 画像 */}
+      {/* Image */}
       <img
         className='absolute inset-0 m-auto w-full object-cover'
-        src={`/heros/${imageName}.png`}
+        src={`/heroes/${heroImage}.png`}
         alt='#'
       />
 
-      {/* ぼかし */}
+      {/* Blur */}
       <div
         className='absolute inset-0 m-auto bg-black/10 object-cover'
         style={{ backdropFilter: 'blur(3px)' }}
@@ -40,18 +47,21 @@ export const HeroImage = ({ imageName, title, publishedAt, tags }: Props): JSX.E
           className='m-auto px-4 md:px-8'
           style={{ maxWidth: CONTENTS_MAX_WIDTH }}
         >
-          {/* タイトル */}
+          {/* Hero Text */}
+          {heroText && <div className='mb-1'>{heroText}</div>}
+
+          {/* Title */}
           <h1 className='mb-2 text-xl font-semibold leading-relaxed md:mb-2 md:text-2xl lg:mb-2.5 lg:text-3xl'>
             {title}
           </h1>
 
-          {/* 更新日 */}
+          {/* Update Date */}
           <div className='flex items-center gap-2 text-sm md:text-base'>
             <FontAwesomeIcon icon={faCalendar} />
-            <time className='tracking-widest'>{localPublishedAt}</time>
+            <time className='tracking-wider'>{localPublishedAt}</time>
           </div>
 
-          {/* タグ */}
+          {/* Tags */}
           <div className={clsx('flex flex-wrap gap-4 text-sm', tags.length && 'mt-3')}>
             {tags.map((tag) => (
               <Link
