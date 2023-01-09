@@ -22,6 +22,7 @@ const query = graphql(`
 
 export const BlogCards = (): JSX.Element => {
   const { loading, error, data } = useQuery(query, {
+    fetchPolicy: 'no-cache',
     variables: {
       orderBy: PostOrderByInput.IdDesc,
     },
