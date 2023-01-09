@@ -181,8 +181,9 @@ export const NewBlogForm = (): JSX.Element => {
             size='small'
             type='submit'
             disabled={!isDirty || loading}
+            loading={loading}
           >
-            {loading ? '作成中...' : '作成'}
+            作成
           </Button>
         </div>
       </BlogSection>

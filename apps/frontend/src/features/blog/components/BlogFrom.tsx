@@ -138,8 +138,9 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
           size='small'
           type='submit'
           disabled={!isDirty || loading}
+          loading={loading}
         >
-          {loading ? '登録中...' : '保存'}
+          保存
         </Button>
       </div>
     </form>

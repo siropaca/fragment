@@ -1,3 +1,5 @@
+import { faSlash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import React from 'react';
 
@@ -8,6 +10,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant: Variant;
   color?: Color;
   size?: 'small' | 'medium';
+  loading?: boolean;
 }
 
 const COLORS: Record<Variant, Record<Color, string>> = {
@@ -23,14 +26,17 @@ const COLORS: Record<Variant, Record<Color, string>> = {
 };
 
 export const Button = React.forwardRef<HTMLButtonElement, Props>(
-  ({ variant, color = 'primary', size = 'medium', ...buttonProps }: Props, ref) => {
+  (
+    { variant, color = 'primary', size = 'medium', loading = false, ...buttonProps }: Props,
+    ref,
+  ) => {
     return (
       <button
         ref={ref}
         {...buttonProps}
         type={buttonProps.type ?? 'button'}
         className={clsx(
-          'select-none px-3 tracking-wider focus:outline-none',
+          'inline-flex select-none items-center gap-x-2 px-3 tracking-wider focus:outline-none',
           size === 'medium' && 'h-10',
           size === 'small' && 'h-8 text-sm',
           buttonProps.disabled ? 'cursor-not-allowed grayscale' : 'cursor-pointer hover:opacity-80',
@@ -38,6 +44,15 @@ export const Button = React.forwardRef<HTMLButtonElement, Props>(
           buttonProps.className,
         )}
       >
+        {loading && (
+          <FontAwesomeIcon
+            icon={faSlash}
+            spin
+            size='2xs'
+            // @ts-ignore
+            style={{ '--fa-animation-duration': '1.1s' }}
+          />
+        )}
         {buttonProps.children}
       </button>
     );
