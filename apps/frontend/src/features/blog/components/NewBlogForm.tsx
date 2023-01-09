@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 
-import { Textarea } from '@/components/Inputs';
+import { Input, Select, Textarea } from '@/components/Inputs';
 import { BlogSection } from '@/features/blog/components';
 import { graphql } from '@/gql';
 import { HeroImage } from '@/gql/graphql';
@@ -86,36 +86,35 @@ export const NewBlogForm = (): JSX.Element => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <BlogSection>
-        <Textarea
-          placeholder='タイトルを追加...'
-          className='h-32'
-          {...register('title')}
-        />
+        <div>
+          <Textarea
+            placeholder='タイトルを追加...'
+            className='h-32'
+            {...register('title')}
+          />
+        </div>
 
-        <Textarea
-          placeholder='説明を追加...'
-          className='h-32'
-          {...register('description')}
-        />
+        <div className='mt-4'>
+          <Textarea
+            placeholder='説明を追加...'
+            className='h-32'
+            {...register('description')}
+          />
+        </div>
 
-        <select
-          {...register('heroImage')}
-          className='cursor-pointer bg-transparent focus:outline-none'
-        >
-          {/* eslint-disable-next-line @typescript-eslint/no-unsafe-argument */}
-          {Object.entries(HeroImage).map(([key, value]) => {
-            return (
-              <option
-                key={key}
-                value={value}
-              >
-                {value}
-              </option>
-            );
-          })}
-        </select>
+        <div className='mt-4'>
+          <Select
+            {...register('heroImage')}
+            options={Object.entries(HeroImage).map(([key, value], index) => {
+              return {
+                label: `${++index}. ${key}`,
+                value,
+              };
+            })}
+          ></Select>
+        </div>
 
-        <div className='mt-5'>
+        <div className='mt-4'>
           <Link
             href={PagePath.heros()}
             target='_blank'
@@ -126,10 +125,10 @@ export const NewBlogForm = (): JSX.Element => {
         </div>
 
         <div className='mt-5'>
-          <input
+          <Input
             type='text'
             placeholder='heroText'
-            className='w-full bg-transparent'
+            className='w-full'
             {...register('heroText')}
           />
         </div>
