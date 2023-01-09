@@ -1,5 +1,8 @@
 import { useQuery } from '@apollo/client';
+import { faEllipsis, faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { DropdownMenu } from '@/components/DataDisplay/DropdownMenu';
 import { Markdown } from '@/components/DataDisplay/Markdown';
 import { BlogFrom, BlogSection } from '@/features/blog/components';
 import { graphql } from '@/gql';
@@ -58,8 +61,37 @@ export const BlogBody = (props: Props): JSX.Element => {
         {data.post?.postNodes.map((node) => {
           return (
             <BlogSection key={node.id}>
-              <div className='mb-2 tracking-widest'>
-                {formatDateJa(new Date(node.publishedAt as string))}
+              <div className='-mt-2 mb-2 flex justify-between'>
+                <time className='tracking-widest'>
+                  {formatDateJa(new Date(node.publishedAt as string))}
+                </time>
+
+                <DropdownMenu>
+                  <DropdownMenu.Button>
+                    <FontAwesomeIcon
+                      icon={faEllipsis}
+                      size='lg'
+                    />
+                  </DropdownMenu.Button>
+
+                  <DropdownMenu.MenuItem>
+                    <FontAwesomeIcon
+                      icon={faPen}
+                      size='sm'
+                      className='mr-3'
+                    />
+                    編集
+                  </DropdownMenu.MenuItem>
+
+                  <DropdownMenu.MenuItem>
+                    <FontAwesomeIcon
+                      icon={faTrashCan}
+                      size='sm'
+                      className='mr-3'
+                    />
+                    削除
+                  </DropdownMenu.MenuItem>
+                </DropdownMenu>
               </div>
 
               <Markdown markdown={node.body} />

@@ -119,7 +119,6 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
 
       <div>
         <Textarea
-          placeholder='テキストを追加...'
           className={clsx('h-64', !isEditor && 'hidden')}
           {...register('text')}
         />

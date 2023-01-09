@@ -43,7 +43,7 @@ export const MarkdownCode = ({ inline, className, children, ...props }: CodeProp
   };
 
   return (
-    <div className='relative rounded-md bg-zinc-700 px-5 py-3 leading-none'>
+    <div className='relative rounded-md bg-zinc-700 px-5 py-3 leading-normal'>
       <CopyToClipboard
         text={codeText}
         onCopy={handleCopyClick}
@@ -53,6 +53,7 @@ export const MarkdownCode = ({ inline, className, children, ...props }: CodeProp
           <FontAwesomeIcon
             icon={faCopy}
             className='cursor-pointer opacity-50 hover:opacity-80'
+            size='lg'
           />
         </span>
       </CopyToClipboard>
