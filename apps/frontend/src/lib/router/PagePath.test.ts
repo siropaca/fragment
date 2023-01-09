@@ -76,11 +76,11 @@ describe('PagePath', () => {
   });
 
   /**
-   * heros()
+   * heroes()
    */
-  describe('heros()', () => {
+  describe('heroes()', () => {
     it('正しいパスが返るか', () => {
-      expect(PagePath.heros()).toEqual('/heros');
+      expect(PagePath.heroes()).toEqual('/heroes');
     });
   });
 });

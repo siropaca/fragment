@@ -116,7 +116,7 @@ export const NewBlogForm = (): JSX.Element => {
 
         <div className='mt-4'>
           <Link
-            href={PagePath.heros()}
+            href={PagePath.heroes()}
             target='_blank'
             rel='noreferrer'
           >

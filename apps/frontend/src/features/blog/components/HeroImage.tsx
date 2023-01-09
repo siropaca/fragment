@@ -29,7 +29,7 @@ export const HeroImage = ({
       {/* 画像 */}
       <img
         className='absolute inset-0 m-auto w-full object-cover'
-        src={`/heros/${heroImage}.png`}
+        src={`/heroes/${heroImage}.png`}
         alt='#'
       />
 

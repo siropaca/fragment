@@ -30,7 +30,7 @@ export const PostCard = (props: Props): JSX.Element => {
         <div className='relative flex h-40 shrink-0 items-center justify-center overflow-hidden'>
           <img
             className='absolute inset-0 m-auto object-cover'
-            src={`/heros/${props.heroImage}.png`}
+            src={`/heroes/${props.heroImage}.png`}
             alt='#'
           />
 

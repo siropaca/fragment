@@ -58,10 +58,10 @@ export const PagePath = {
   },
 
   /**
-   * Herosページ
+   * Heroesページ
    */
-  heros(withOrigin?: boolean): string {
-    const path = '/heros';
+  heroes(withOrigin?: boolean): string {
+    const path = '/heroes';
     return withOrigin ? PagePath.withOrigin(path) : path;
   },
 
