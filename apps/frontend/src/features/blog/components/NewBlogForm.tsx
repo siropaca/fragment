@@ -46,6 +46,15 @@ export const NewBlogForm = (): JSX.Element => {
     formState: { errors, isDirty },
   } = useForm<NewPostField>();
 
+  const loading = createPostLoading || publishPostLoading;
+
+  const heroImageOptions = Object.entries(HeroImage).map(([key, value], index) => {
+    return {
+      label: `${++index}. ${key}`,
+      value,
+    };
+  });
+
   const publishPost = (postId: string) => {
     commitPublishMutation({
       variables: {
@@ -63,13 +72,20 @@ export const NewBlogForm = (): JSX.Element => {
   };
 
   const onSubmit = (formData: NewPostField) => {
+    let heroImage = '';
+
+    if (formData.heroImage === 'random') {
+      const random = Math.floor(Math.random() * heroImageOptions.length);
+      heroImage = heroImageOptions[random].value;
+    }
+
     commitCreateMutation({
       variables: {
         data: {
           title: formData.title.replace(/\n/g, ' '),
           description: formData.description,
           showDescription: !!formData.description,
-          heroImage: formData.heroImage as HeroImage,
+          heroImage: (heroImage || formData.heroImage) as HeroImage,
           heroText: formData.heroText,
           tags: [],
         },
@@ -83,43 +99,49 @@ export const NewBlogForm = (): JSX.Element => {
     });
   };
 
-  const loading = createPostLoading || publishPostLoading;
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <BlogSection>
+        {/* Title */}
         <div>
-          <div className='mb-1'>Title *</div>
+          <div className='mb-2'>Title *</div>
 
           <Textarea
-            placeholder='タイトルを追加...'
             className='h-32'
             {...register('title')}
           />
         </div>
 
+        {/* Description */}
         <div className='mt-4'>
-          <div className='mb-1'>Description</div>
+          <div className='mb-2'>Description</div>
 
           <Textarea
-            placeholder='説明を追加...'
             className='h-32'
             {...register('description')}
           />
         </div>
 
+        {/* Tags */}
         <div className='mt-4'>
-          <div className='mb-1'>Hero Image</div>
+          <div className='mb-2'>Tags</div>
+          aa
+        </div>
+
+        {/* Hero Image */}
+        <div className='mt-4'>
+          <div className='mb-2'>Hero Image</div>
 
           <div className='flex items-end gap-x-4'>
+            <Input
+              type='text'
+              placeholder='Text'
+              {...register('heroText')}
+            />
+
             <Select
               {...register('heroImage')}
-              options={Object.entries(HeroImage).map(([key, value], index) => {
-                return {
-                  label: `${++index}. ${key}`,
-                  value,
-                };
-              })}
+              options={[{ label: 'Random', value: 'random' }, ...heroImageOptions]}
             />
 
             <div className='opacity-50 hover:opacity-80'>
@@ -137,15 +159,6 @@ export const NewBlogForm = (): JSX.Element => {
                 size='sm'
               />
             </div>
-          </div>
-
-          <div className='mt-4'>
-            <Input
-              type='text'
-              placeholder='heroText'
-              className='w-full'
-              {...register('heroText')}
-            />
           </div>
         </div>
 

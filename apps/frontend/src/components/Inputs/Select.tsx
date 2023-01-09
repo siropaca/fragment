@@ -12,7 +12,7 @@ export const Select = React.forwardRef<HTMLSelectElement, Props>(
         ref={ref}
         {...selectProps}
         className={clsx(
-          'cursor-pointer rounded-lg border border-gray-200 bg-transparent px-3 py-2 focus:outline-none dark:border-gray-600',
+          'h-10 cursor-pointer rounded-lg border border-gray-200 bg-transparent px-3 focus:outline-none dark:border-gray-600',
           selectProps.className,
         )}
       >
