@@ -107,6 +107,7 @@ export const BlogFrom = ({ postId, onCompleted }: Props): JSX.Element => {
         <Button
           variant={isPreview ? 'contained' : 'text'}
           size='small'
+          disabled={!watch().text}
           onClick={() => {
             setIsPreview(true);
             setIsEditor(false);

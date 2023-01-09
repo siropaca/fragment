@@ -30,7 +30,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Props>(
         {...buttonProps}
         type={buttonProps.type ?? 'button'}
         className={clsx(
-          'px-3 tracking-wider focus:outline-none',
+          'select-none px-3 tracking-wider focus:outline-none',
           size === 'medium' && 'h-10',
           size === 'small' && 'h-8 text-sm',
           buttonProps.disabled ? 'cursor-not-allowed grayscale' : 'cursor-pointer hover:opacity-80',
