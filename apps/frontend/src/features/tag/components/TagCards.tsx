@@ -34,9 +34,9 @@ export const TagCards = (props: Props): JSX.Element => {
     },
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <div>Loading...</div>;
 
-  if (error) return <p>Error: {JSON.stringify(error)}</p>;
+  if (error) return <div>Error: {JSON.stringify(error)}</div>;
 
   return (
     <>

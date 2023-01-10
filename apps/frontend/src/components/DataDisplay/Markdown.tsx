@@ -42,8 +42,22 @@ export const MarkdownCode = ({ inline, className, children, ...props }: CodeProp
     }, 1000);
   };
 
+  if (inline) {
+    return (
+      <code
+        className={clsx(
+          'inline-block rounded-lg bg-gray-200 px-2 leading-relaxed dark:bg-zinc-700',
+          className,
+        )}
+        {...props}
+      >
+        {codeText}
+      </code>
+    );
+  }
+
   return (
-    <div className='relative rounded-md bg-zinc-700 px-5 py-3 leading-normal'>
+    <div className='relative rounded-lg bg-zinc-700 px-5 py-3 leading-normal'>
       <CopyToClipboard
         text={codeText}
         onCopy={handleCopyClick}
@@ -64,7 +78,7 @@ export const MarkdownCode = ({ inline, className, children, ...props }: CodeProp
         </div>
       )}
 
-      {!inline && matchLang ? (
+      {matchLang ? (
         <SyntaxHighlighter
           children={codeText}
           style={vscDarkPlus}
