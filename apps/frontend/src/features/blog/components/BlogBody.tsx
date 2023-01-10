@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from '@apollo/client';
+import { faCalendar } from '@fortawesome/free-regular-svg-icons';
 import { faEllipsis, faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
@@ -8,7 +9,7 @@ import { DropdownMenu } from '@/components/DataDisplay/DropdownMenu';
 import { Markdown } from '@/components/DataDisplay/Markdown';
 import { BlogFrom, BlogSection } from '@/features/blog/components';
 import { graphql } from '@/gql';
-import { formatDateJa } from '@/utils/date';
+import { formatDateEn, utcToJstTime } from '@/utils/date';
 
 interface Props {
   postId: string;
@@ -104,9 +105,13 @@ export const BlogBody = (props: Props): JSX.Element => {
             <BlogSection key={node.id}>
               {/* Header */}
               <div className='-mt-2 mb-4 flex justify-between'>
-                <time className='tracking-widest'>
-                  {formatDateJa(new Date(node.publishedAt as string))}
-                </time>
+                <span className='text-gray-400 dark:text-gray-500'>
+                  <FontAwesomeIcon
+                    icon={faCalendar}
+                    className='mr-2'
+                  />
+                  <time>{formatDateEn(utcToJstTime(new Date(node.publishedAt)))}</time>
+                </span>
 
                 <DropdownMenu>
                   <DropdownMenu.Button>

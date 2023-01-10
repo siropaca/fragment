@@ -58,7 +58,7 @@ export const HeroImage = ({
           {/* Update Date */}
           <div className='flex items-center gap-2 text-sm md:text-base'>
             <FontAwesomeIcon icon={faCalendar} />
-            <time className='tracking-wider'>{localPublishedAt}</time>
+            <time>{localPublishedAt}</time>
           </div>
 
           {/* Tags */}

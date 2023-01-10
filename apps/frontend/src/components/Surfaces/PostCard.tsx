@@ -56,9 +56,7 @@ export const PostCard = (props: Props): JSX.Element => {
           )}
 
           <div className='mt-3 text-sm text-gray-400 dark:text-gray-500'>
-            <time className='tracking-wider'>
-              {formatDateEn(utcToJstTime(new Date(props.publishedAt!)))}
-            </time>
+            <time>{formatDateEn(utcToJstTime(new Date(props.publishedAt!)))}</time>
 
             <span>
               <FontAwesomeIcon
