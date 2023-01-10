@@ -110,7 +110,10 @@ export const BlogBody = (props: Props): JSX.Element => {
                     icon={faCalendar}
                     className='mr-2'
                   />
-                  <time>{formatDateEn(utcToJstTime(new Date(node.publishedAt)))}</time>
+                  on{' '}
+                  <time>
+                    {formatDateEn(utcToJstTime(new Date(node.publishedAt)), 'LLL d, yyyy')}
+                  </time>
                 </span>
 
                 <DropdownMenu>

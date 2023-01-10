@@ -1,4 +1,5 @@
 import { faCopy } from '@fortawesome/free-regular-svg-icons';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import { useState } from 'react';
@@ -25,6 +26,23 @@ export const Markdown = ({ markdown, className }: Props): JSX.Element => {
         children={markdownText}
         components={{
           code: MarkdownCode,
+          a: ({ href, children }) => {
+            return (
+              <a
+                href={href}
+                target='_blank'
+                rel='noreferrer'
+                className='text-cyan-600 hover:opacity-50'
+              >
+                {children}
+                <FontAwesomeIcon
+                  icon={faArrowUpRightFromSquare}
+                  size='sm'
+                  className='ml-2'
+                />
+              </a>
+            );
+          },
         }}
       />
     </div>
