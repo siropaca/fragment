@@ -13,6 +13,9 @@ interface Props {
   className?: string;
 }
 
+/**
+ * Markdown
+ */
 export const Markdown = ({ markdown, className }: Props): JSX.Element => {
   const markdownText = markdown.replace(/\n/g, '  \n');
 
@@ -28,6 +31,9 @@ export const Markdown = ({ markdown, className }: Props): JSX.Element => {
   );
 };
 
+/**
+ * MarkdownCode
+ */
 export const MarkdownCode = ({ inline, className, children, ...props }: CodeProps): JSX.Element => {
   const codeText = children.toString().replace(/ {2}\n/g, '\n');
   const matchLang = /language-(\w+)/.exec(className || '');
@@ -82,7 +88,8 @@ export const MarkdownCode = ({ inline, className, children, ...props }: CodeProp
         <SyntaxHighlighter
           children={codeText}
           style={vscDarkPlus}
-          language={matchLang[1]}
+          // FIXME: tsが本番環境でハイライトされないので一時対応
+          language={matchLang[1] === 'ts' ? 'tsx' : matchLang[1]}
           PreTag='div'
         />
       ) : (
