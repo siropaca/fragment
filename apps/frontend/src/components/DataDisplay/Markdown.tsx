@@ -26,6 +26,9 @@ export const Markdown = ({ markdown, className }: Props): JSX.Element => {
         children={markdownText}
         components={{
           code: MarkdownCode,
+          p: ({ children }) => {
+            return <p className='my-4'>{children}</p>;
+          },
           a: ({ href, children }) => {
             return (
               <a
@@ -81,7 +84,7 @@ export const MarkdownCode = ({ inline, className, children, ...props }: CodeProp
   }
 
   return (
-    <div className='relative rounded-lg bg-zinc-700 px-5 py-3 leading-normal'>
+    <div className='relative my-4 rounded-lg bg-zinc-700 px-5 py-3 leading-normal'>
       <CopyToClipboard
         text={codeText}
         onCopy={handleCopyClick}
